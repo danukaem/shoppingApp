@@ -1,26 +1,20 @@
-.navbar-div{
-    
+.navbar-div {}
 
-}
-
-.sidebar-container-div{
-    /* height: 100vh; */
-
-}
+.sidebar-container-div {}
 
 
-.sidebar-div{
+.sidebar-div {
     background: rgb(21, 141, 197);
+
+
+}
+
+.container-div {
     height: 100vh;
 
-
 }
 
-.container-div{
-
-}
-
-.footer-div{
+.footer-div {
 
     background: gray;
     margin: unset;

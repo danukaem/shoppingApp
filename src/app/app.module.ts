@@ -9,6 +9,10 @@ import { NavbarComponent } from './components/layout/navbar/navbar.component';
 import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
 import { ContainerComponent } from './components/layout/container/container.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
+import { RegisterUserComponent } from './components/register-user/register-user.component';
+import { RegisterAdminComponent } from './components/register-admin/register-admin.component';
+import { RegisterSuperAdminComponent } from './components/register-super-admin/register-super-admin.component';
+import { SigninUserComponent } from './components/signin-user/signin-user.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +21,11 @@ import { FooterComponent } from './components/layout/footer/footer.component';
     NavbarComponent,
     SidebarComponent,
     ContainerComponent,
-    FooterComponent
+    FooterComponent,
+    RegisterUserComponent,
+    RegisterAdminComponent,
+    RegisterSuperAdminComponent,
+    SigninUserComponent
   ],
   imports: [
     BrowserModule,
