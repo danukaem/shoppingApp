@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { initializeApp } from 'firebase/app';
 import { environment } from '../environments/environment';
-// import { getDatabase, ref, get, set, update, onValue ,child, push ,remove} from 'firebase/database';
+import { getDatabase, ref, get, set, update, onValue ,child, push ,remove} from 'firebase/database';
 
 
 
@@ -19,9 +19,9 @@ export class AppComponent implements OnInit {
   }
 
   writeData() {
-    // const app = initializeApp(environment.firebase);
-    // const db = getDatabase(app);
-    // const dataRef = ref(db, 'users/');
+    const app = initializeApp(environment.firebase);
+    const db = getDatabase(app);
+    const dataRef = ref(db, 'users/');
 
 
     console.log('aaaaaaaa1');
@@ -76,10 +76,10 @@ export class AppComponent implements OnInit {
 
 
 
-    // set(push(ref(db, 'users' )), {
-    //   date: new Date().toDateString(),
-    //   time:new Date().toTimeString()
-    // });
+    set(push(ref(db, 'users' )), {
+      date: new Date().toDateString(),
+      time:new Date().toTimeString()
+    });
 
 
 // remove???????
