@@ -64,7 +64,7 @@ export class AppComponent implements OnInit {
     //   profile_picture : 'imageUrl'
     // });
     
-    // get(child(dataRef, `boys/school`)).then((snapshot) => {
+    // get(child(dataRef, `users`)).then((snapshot) => {
     //   if (snapshot.exists()) {
     //     console.log(snapshot.val());
     //   } else {
@@ -74,13 +74,35 @@ export class AppComponent implements OnInit {
     //   console.error(error);
     // });
 
+    let a ;
+    get( dataRef ).then((snapshot) => {
+      if (snapshot.exists()) {
+        console.log(snapshot.val());
+        a=JSON.parse(snapshot.val());
+console.log(a);
 
-
-    set(push(ref(db, 'users' )), {
-      date: new Date().toDateString(),
-      time:new Date().toTimeString()
+      } else {
+        console.log("No data available");
+      }
+    }).catch((error) => {
+      console.error(error);
     });
 
+console.log(a);
+
+    debugger
+
+
+    // set(push(ref(db, 'users' )), {
+    //   date: new Date().toDateString(),
+    //   time:new Date().toTimeString()
+    // });
+
+
+    // set(push(ref(db, 'schools' )), {
+    //   date: new Date().toDateString(),
+    //   time:new Date().toTimeString()
+    // });
 
 // remove???????
     ////////////////////////////////////////////////////////////
