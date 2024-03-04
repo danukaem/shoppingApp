@@ -1,16 +1,19 @@
-.navbar-div {}
+.navbar-div {
+    /* min-height: 5vh; */
+
+}
 
 .sidebar-container-div {}
 
 
 .sidebar-div {
-    background: rgb(21, 141, 197);
+    background: rgb(243 243 243)
 
 
 }
 
 .container-div {
-    height: 100vh;
+    min-height: 80vh;
 
 }
 
@@ -18,6 +21,6 @@
 
     background: gray;
     margin: unset;
-    height: 15vh;
+    min-height: 15vh;
 
 }

@@ -1,13 +1,21 @@
-.nav-bar-style{
+.nav-bar-style {
     background: #d11da4;
 }
 
-.navbar-btn-style{
+.navbar-btn-style {
     background: transparent;
     color: white;
 }
 
-.classtest{
-    background: #213ade;
+.navbar-container-div {
+    background: #f82ad6;
+}
+
+.nav-text {
+    color: white;
+}
+
+.row-style{
+    min-height: 5vh;
 
 }
