@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   constructor() {
   }
   ngOnInit(): void {
-    this.writeData();
+    // this.writeData();
   }
 
   writeData() {

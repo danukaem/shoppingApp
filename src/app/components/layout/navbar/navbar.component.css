@@ -1,14 +1,10 @@
-.nav-bar-style {
-    background: #d11da4;
-}
-
 .navbar-btn-style {
     background: transparent;
     color: white;
 }
 
 .navbar-container-div {
-    background: #f82ad6;
+    background: rgb(240, 102, 217);
 }
 
 .nav-text {
@@ -18,4 +14,18 @@
 .row-style{
     min-height: 5vh;
 
+}
+
+.home-img{
+    /* width: 45%; */
+    height: 5vh;
+    position: absolute;
+    top:0;
+
+    
+}
+
+
+.icon-div{
+    height: 5vh;
 }

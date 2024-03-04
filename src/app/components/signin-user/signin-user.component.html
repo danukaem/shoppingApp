@@ -1,8 +1,16 @@
 <nav class="navbar navbar-expand-lg navbar-dark nav-bar-style">
-    <div class="container-fluid">
-        <a class="navbar-brand" [routerLink]="['/']">Home</a>
+    <div class="container-fluid register-nav-div">
+        <span class="navbar-brand col-4 nav-text home-img-span" [routerLink]="['/']" >
+            <img src="../../../../assets/DK.png" class="home-img">
+
+        </span>
     </div>
 </nav>
+
+<div class="signin-account-div">
+    <h1>Sign in to account</h1>
+
+</div>
 <div class="container-fluid">
     <div class="row justify-content-center align-items-center ">
         <div class="col-12 col-md-4">
@@ -15,10 +23,11 @@
                     <label for="exampleInputPassword1" class="form-label">Password</label>
                     <input type="password" class="form-control" id="exampleInputPassword1">
                 </div>
-        
+
                 <button type="button" class="btn btn-primary">login</button>
+                <span class="create-account-span" [routerLink]="['/register']">or create an account</span>
             </form>
         </div>
     </div>
-    
+
 </div>

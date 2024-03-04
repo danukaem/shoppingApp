@@ -1,13 +1,35 @@
-.nav-bar-style{
-    background: #d11da4;
+.nav-bar-style {
+    background: rgb(240, 102, 217);
+    padding: unset !important;
+
 }
 
-.navbar-btn-style{
-    background: transparent;
-    color: white;
-}
-
-.row{
+.row {
     margin-top: 50px;
     margin-bottom: 50px;
+}
+
+.create-account-div {
+    padding: 20px;
+}
+
+
+.signin-account-span {
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.signin-account-span:hover {
+    text-decoration: underline;
+
+}
+
+.register-nav-div {
+    height: 5vh;
+
+}
+
+.home-img {
+    height: 5vh;
+
 }
