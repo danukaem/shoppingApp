@@ -3,17 +3,24 @@
         <div class="col-lg-2 col-sm-5">
             <div class="container-fluid icon-div">
                 <div class="row align-self-center">
-                    <span class="navbar-brand col-4 nav-text home-img-span" >
+                    <span class="navbar-brand col-4 nav-text home-img-span">
                         <img src="../../../../assets/DK.png" class="home-img">
 
                     </span>
-                    <a class="navbar-brand col-4 nav-text" [routerLink]="['/signin']">Sign in</a>
-                    <a class="navbar-brand col-4 nav-text" [routerLink]="['/register']">Register</a>
+                    <a *ngIf="!sharedVariable.user" class="navbar-brand col-4 nav-text" [routerLink]="['/signin']">
+                        Sign in</a>
+                    <a *ngIf="!sharedVariable.user" class="navbar-brand col-4 nav-text"
+                        [routerLink]="['/register']">Register</a>
                 </div>
             </div>
 
         </div>
-        <div class="col-lg-7 col-sm-2 "></div>
+        <div class="col-lg-7 col-sm-2 ">
+            <span class="">
+                {{sharedVariable.user?.username}}
+
+            </span>
+        </div>
         <div class="col-lg-3 col-sm-5 ">
             <div class="container-fluid">
 

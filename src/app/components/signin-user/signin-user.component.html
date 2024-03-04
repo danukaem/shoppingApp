@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark nav-bar-style">
     <div class="container-fluid register-nav-div">
-        <span class="navbar-brand col-4 nav-text home-img-span" [routerLink]="['/']" >
+        <span class="navbar-brand col-4 nav-text home-img-span" [routerLink]="['/']">
             <img src="../../../../assets/DK.png" class="home-img">
 
         </span>
@@ -11,20 +11,25 @@
     <h1>Sign in to account</h1>
 
 </div>
+
+<div class="alert alert-success   fade show" role="alert" *ngIf="showAlertfailed">
+      Invalide username or password.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="closeAlert()"></button>
+</div>
 <div class="container-fluid">
     <div class="row justify-content-center align-items-center ">
         <div class="col-12 col-md-4">
             <form>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <label class="form-label">Username</label>
+                    <input [(ngModel)]="username" name="username" type="email" class="form-control">
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <label class="form-label">Password</label>
+                    <input [(ngModel)]="password" name="password" type="password" class="form-control">
                 </div>
 
-                <button type="button" class="btn btn-primary">login</button>
+                <button type="button" class="btn btn-primary" (click)="signin()">login</button>
                 <span class="create-account-span" [routerLink]="['/register']">or create an account</span>
             </form>
         </div>

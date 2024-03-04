@@ -11,6 +11,7 @@ import { User } from 'src/app/services/models';
 export class RegisterUserComponent implements OnInit {
 
   user: User = {
+    username: '',
     firstName: '',
     lastName: '',
     gender: '',
@@ -40,6 +41,7 @@ export class RegisterUserComponent implements OnInit {
     if (this.formValidation()) {
       this.apiService.userRegister(this.user);
       this.user = {
+        username: '',
         firstName: '',
         lastName: '',
         gender: '',
@@ -61,7 +63,10 @@ export class RegisterUserComponent implements OnInit {
 
   formValidation(): boolean {
 
-    if (this.user.firstName.trim() == '') {
+    if (this.user.username.trim() == '') {
+      this.item = 'username';
+      return false;
+    } else if (this.user.firstName.trim() == '') {
       this.item = 'first name';
       return false;
     } else if (this.user.lastName.trim() == '') {
