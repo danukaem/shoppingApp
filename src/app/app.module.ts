@@ -10,8 +10,6 @@ import { SidebarComponent } from './components/layout/sidebar/sidebar.component'
 import { ContainerComponent } from './components/layout/container/container.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
-import { RegisterAdminComponent } from './components/register-admin/register-admin.component';
-import { RegisterSuperAdminComponent } from './components/register-super-admin/register-super-admin.component';
 import { SigninUserComponent } from './components/signin-user/signin-user.component';
 
 @NgModule({
@@ -23,8 +21,6 @@ import { SigninUserComponent } from './components/signin-user/signin-user.compon
     ContainerComponent,
     FooterComponent,
     RegisterUserComponent,
-    RegisterAdminComponent,
-    RegisterSuperAdminComponent,
     SigninUserComponent
   ],
   imports: [

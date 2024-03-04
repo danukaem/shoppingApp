@@ -90,7 +90,6 @@ console.log(a);
 
 console.log(a);
 
-    debugger
 
 
     // set(push(ref(db, 'users' )), {
