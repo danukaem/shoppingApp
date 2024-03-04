@@ -69,6 +69,7 @@ export class ApiService {
       if (snapshot.exists()) {
         console.log(snapshot.val());
         this.sharedVariable.user = snapshot.val();
+        localStorage.setItem('username',this.sharedVariable.user?.username.toString()+'')
         logged = true;
       } else {
         console.log("No data available");

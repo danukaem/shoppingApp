@@ -7,17 +7,18 @@
                         <img src="../../../../assets/DK.png" class="home-img">
 
                     </span>
-                    <a *ngIf="!sharedVariable.user" class="navbar-brand col-4 nav-text" [routerLink]="['/signin']">
+                    <a *ngIf="username == undefined || username== null||username== 'null'"
+                        class="navbar-brand col-4 nav-text" [routerLink]="['/signin']">
                         Sign in</a>
-                    <a *ngIf="!sharedVariable.user" class="navbar-brand col-4 nav-text"
-                        [routerLink]="['/register']">Register</a>
+                    <a *ngIf="username == undefined|| username== null||username== 'null'"
+                        class="navbar-brand col-4 nav-text" [routerLink]="['/register']">Register</a>
                 </div>
             </div>
 
         </div>
         <div class="col-lg-7 col-sm-2 ">
             <span class="">
-                {{sharedVariable.user?.username}}
+                {{ username != undefined && username!= null && username!= 'null' ? username:''}}
 
             </span>
         </div>
