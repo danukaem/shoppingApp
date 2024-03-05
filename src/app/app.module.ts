@@ -11,6 +11,8 @@ import { ContainerComponent } from './components/layout/container/container.comp
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { SigninUserComponent } from './components/signin-user/signin-user.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialsModule } from './materials.module';
 
 @NgModule({
   declarations: [
@@ -21,12 +23,14 @@ import { SigninUserComponent } from './components/signin-user/signin-user.compon
     ContainerComponent,
     FooterComponent,
     RegisterUserComponent,
-    SigninUserComponent
+    SigninUserComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MaterialsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
