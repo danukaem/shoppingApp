@@ -82,4 +82,27 @@ export class ApiService {
 
 
   }
+
+  imageUpload(file: File) {
+
+    const app = initializeApp(environment.firebase);
+    const db = getDatabase(app);
+    const dataRef = ref(db, 'files/');
+
+    // set(push(dataRef), {
+    //   firstName: user['firstName'],
+    //   flastName: user['lastName'],
+    //   gender: user['gender'],
+    //   address: user['address'],
+    //   email: user['email'],
+    //   password: user['password'],
+    //   date: new Date().toDateString(),
+    //   time: new Date().toTimeString()
+    // });
+
+    set(dataRef, {
+      file:file
+    });
+
+  }
 }

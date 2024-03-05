@@ -13,6 +13,7 @@ import { RegisterUserComponent } from './components/register-user/register-user.
 import { SigninUserComponent } from './components/signin-user/signin-user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialsModule } from './materials.module';
+import { AddItemComponent } from './components/add-item/add-item.component';
 
 @NgModule({
   declarations: [
@@ -24,13 +25,15 @@ import { MaterialsModule } from './materials.module';
     FooterComponent,
     RegisterUserComponent,
     SigninUserComponent,
+    AddItemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
-    MaterialsModule
+    MaterialsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
