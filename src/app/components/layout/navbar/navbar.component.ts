@@ -13,7 +13,7 @@ export class NavbarComponent implements OnInit {
 
 
     console.log('user',this.sharedVariable.user);
-    this.username =this.sharedVariable.user?.username;
+    this.username =this.sharedVariable.user?.email;
 
   
   }

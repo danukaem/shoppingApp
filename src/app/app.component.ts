@@ -36,12 +36,12 @@ export class AppComponent implements OnInit {
     // });
 
 
-    set(ref(db,'users/'+0),{
-      name:'malawana',
-      age:33,
-      items:[{iName:'soap',price:35},{iName:'sugar',price:155},{iName:'rice',price:210}],
-      fileIds:['aaa','bbb','ccc']
-    });
+    // set(ref(db,'users/'+0),{
+    //   name:'malawana',
+    //   age:33,
+    //   items:[{iName:'soap',price:35},{iName:'sugar',price:155},{iName:'rice',price:210}],
+    //   fileIds:['aaa','bbb','ccc']
+    // });
 
 
     // update(ref(db,'users/'+0),{
@@ -76,21 +76,21 @@ export class AppComponent implements OnInit {
     //   console.error(error);
     // });
 
-    let a ;
-    get( dataRef ).then((snapshot) => {
-      if (snapshot.exists()) {
-        console.log(snapshot.val());
-        a=JSON.parse(snapshot.val());
-console.log(a);
+//     let a ;
+//     get( dataRef ).then((snapshot) => {
+//       if (snapshot.exists()) {
+//         console.log(snapshot.val());
+//         a=JSON.parse(snapshot.val());
+// console.log(a);
 
-      } else {
-        console.log("No data available");
-      }
-    }).catch((error) => {
-      console.error(error);
-    });
+//       } else {
+//         console.log("No data available");
+//       }
+//     }).catch((error) => {
+//       console.error(error);
+//     });
 
-console.log(a);
+// console.log(a);
 
 
 
@@ -107,6 +107,16 @@ console.log(a);
 
 // remove???????
     ////////////////////////////////////////////////////////////
+
+
+    get(ref(db, 'users/danukaem1234/testDetails')).then((snapshot) => {
+      if (snapshot.exists()) {
+        const data = snapshot.val();
+        console.log('-----------------------------',data);
+      } else {
+        console.log('-----------------------------No data available');
+      }
+    });
 
   }
 

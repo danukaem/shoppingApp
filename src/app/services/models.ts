@@ -1,19 +1,42 @@
 export interface User {
-  username: string,
+  email: string,
   firstName: string,
   lastName: string,
   gender: string,
   address: string,
-  email: string,
   password: string,
-  addedItems:Item[]
-  cartItems:Item[]
-  orderedItems:Item[],
-  userRole:string
+  addedItems: AddedItemDetails[]
+  cartItems: CartItemDetails[]
+  orderedItems: OrderItemDetails[],
+  userRole: string,
+
+}
+
+export interface OrderItemDetails { // details about the items that i ordered
+  itemId: string,
+  quantity: number,
+  orderStatus: string
+}
+
+export interface CartItemDetails { // details about the items that i put to cart
+  itemId: string,
+  quantity: number
+}
+export interface AddedItemDetails { // details about the items that i added to the store
+  itemId: string,
+  quantity: number,
+  placedOrderDetails: PlacedOrderDetail[],
+
+}
+export interface PlacedOrderDetail { // details about the items that buyer placed orders
+  orderPlacedUserId: string,
+  orderQuantity:number,
+  orderStatus:string
 }
 
 export interface Item {
-  files: string[],
+  itemId:string,
+  fileIds: string[],//fileId array
   name: string;
   condition: string;
   saleEnd: string;
@@ -31,7 +54,14 @@ export interface Item {
   description: string;
   brand: string;
   size: string;
-  style: string;
-  material: string;
+  style: string,
+  material: string,
   countryManufactured: string;
+  itemOwnerUserId: string
+}
+
+export interface File{
+  fileId:string,
+  fileName:string,
+  base64String:string
 }

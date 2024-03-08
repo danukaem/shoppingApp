@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { Item } from 'src/app/services/models';
 import { SharedVariablesService } from 'src/app/services/shared-variables.service';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-add-item',
@@ -10,57 +11,87 @@ import { SharedVariablesService } from 'src/app/services/shared-variables.servic
 })
 export class AddItemComponent implements OnInit {
 
-  item: Item = {
-      files: [],
-      name: '',
-      condition: '',
-      saleEnd: '',
-      quantity: '',
-      price: '',
-      postage: '',
-      delivery: '',
-      return: '',
-      coverage: '',
-      specification: '',
-      conditionDescription: '',
-      type: '',
-      color: '',
-      gender: '',
-      description: '',
-      brand: '',
-      size: '',
-      style: '',
-      material: '',
-      countryManufactured: '',
-    }
+  initialItem ={
+    itemId: '',
+    fileIds: [],
+    name: '',
+    condition: '',
+    saleEnd: '',
+    quantity: '',
+    price: '',
+    postage: '',
+    delivery: '',
+    return: '',
+    coverage: '',
+    specification: '',
+    conditionDescription: '',
+    type: '',
+    color: '',
+    gender: '',
+    description: '',
+    brand: '',
+    size: '',
+    style: '',
+    material: '',
+    countryManufactured: '',
+    itemOwnerUserId: ''
+  }
+  item: Item = {...this.initialItem}
 
 
   image64String: any[] = [];
 
-  constructor(private readonly apiService: ApiService, private readonly sharedService: SharedVariablesService) { }
+  uploadedFiles = [];
+
+  constructor(
+    private readonly apiService: ApiService,
+    private readonly sharedVariableService: SharedVariablesService,
+    private readonly sharedService: SharedService
+  ) { }
   ngOnInit(): void {
-    this.image64String = this.sharedService.files;
+    this.image64String = this.sharedVariableService.files;
 
 
   }
 
   uploadFile(event: any) {
-    console.log('file',event);
-    console.log('file',event.target.files);
-    console.log('file',event.target.files[0].name);
-    
+    this.uploadedFiles = event.target.files;
+  }
 
-    for (let i = 0; i < event.target.files.length; i++) {
-      this.apiService.convertImageToBase64(event.target.files[i]).then((base64String: string) => {
-        this.apiService.imageUpload(event.target.files[i].name.replaceAll('.',''), base64String);
-        // this.item.files.push(base64String);
 
-      }).catch((e: any) => {
-        console.error(e)
+  addItem() {
+    const itemId = this.sharedService.generateRandomId(20);
+
+    this.item.itemId = itemId;
+
+    // this.item.itemOwnerUserId = this.sharedVariableService.user?.email!
+
+
+    if (this.uploadedFiles.length > 0) {
+      for (let i = 0; i < this.uploadedFiles.length; i++) {
+        const fileId = this.sharedService.generateRandomId(20);
+        this.item.fileIds.push(fileId);
+        this.apiService.convertImageToBase64(this.uploadedFiles[i]).then((base64String: string) => {
+          this.apiService.imageUpload(fileId, this.uploadedFiles[i]['name'], base64String, this.item).then(() => {
+            this.apiService.addItem(this.item).then(() => {
+
+              this.uploadedFiles = [];
+              this.item = {...this.initialItem}
+            });
+
+          });
+        }).catch((e: any) => {
+          console.error(e)
+        })
+      }
+    } else {
+      this.apiService.addItem(this.item).then(() => {
+        this.uploadedFiles = [];
+
+        this.item = {...this.initialItem}
       })
 
     }
-
 
 
   }
