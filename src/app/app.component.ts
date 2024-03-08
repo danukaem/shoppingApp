@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   constructor() {
   }
   ngOnInit(): void {
-    // this.writeData();
+    this.writeData();
   }
 
   writeData() {
@@ -36,10 +36,12 @@ export class AppComponent implements OnInit {
     // });
 
 
-    // set(ref(db,'users/'+0),{
-    //   name:'malawana',
-    //   age:33
-    // });
+    set(ref(db,'users/'+0),{
+      name:'malawana',
+      age:33,
+      items:[{iName:'soap',price:35},{iName:'sugar',price:155},{iName:'rice',price:210}],
+      fileIds:['aaa','bbb','ccc']
+    });
 
 
     // update(ref(db,'users/'+0),{

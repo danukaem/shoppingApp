@@ -6,7 +6,9 @@ import { User } from './models';
 })
 export class SharedVariablesService {
 
-  user:User|undefined=undefined;
+  user: User | undefined = undefined;
+
+  files: any[] = [];
 
   constructor() { }
 

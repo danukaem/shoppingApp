@@ -17,7 +17,11 @@ export class RegisterUserComponent implements OnInit {
     gender: '',
     address: '',
     email: '',
-    password: ''
+    password: '',
+    addedItems: [],
+    cartItems: [],
+    orderedItems: [],
+    userRole: ''
   }
 
   item = '';
@@ -29,6 +33,12 @@ export class RegisterUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //  for(let i=0;i<3;i++){
+    //   this.apiService.getImage(i);
+    //  }
+
+    this.apiService.getImages(6);
+
   }
 
   selectGender(val: string) {
@@ -47,7 +57,11 @@ export class RegisterUserComponent implements OnInit {
         gender: '',
         address: '',
         email: '',
-        password: ''
+        password: '',
+        addedItems: [],
+        cartItems: [],
+        orderedItems: [],
+        userRole: ''
       };
       this.showAlertSuccess = true;
       setTimeout(() => {
