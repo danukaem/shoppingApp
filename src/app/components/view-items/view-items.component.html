@@ -1,3 +1,13 @@
-<div *ngFor="let itemWithImages  of this.itemsWithImages">
+<!-- <div *ngFor="let itemWithImages  of this.itemsWithImages"  class="image-slider-container">
     <app-image-slider [itemWithImages]="itemWithImages"></app-image-slider>
+</div> -->
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div *ngFor="let itemWithImages  of this.itemsWithImages" class="image-slider-container col-sm-12 col-xs-6 col-md-6  col-lg-4 col-xl-3">
+                <app-image-slider [itemWithImages]="itemWithImages"></app-image-slider>
+        </div>
+    </div>
+
 </div>
