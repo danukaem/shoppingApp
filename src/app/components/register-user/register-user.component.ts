@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { User } from 'src/app/services/models';
+import { SharedVariablesService } from 'src/app/services/shared-variables.service';
 
 @Component({
   selector: 'app-register-user',
@@ -27,16 +28,14 @@ export class RegisterUserComponent implements OnInit {
   showAlert = false;
   showAlertSuccess = false;
 
-  constructor(private readonly apiService: ApiService, private readonly router: Router) {
+  constructor(private readonly apiService: ApiService, private readonly router: Router,private sharedVariable: SharedVariablesService) {
 
   }
 
   ngOnInit(): void {
-    //  for(let i=0;i<3;i++){
-    //   this.apiService.getImage(i);
-    //  }
+   
 
-    this.apiService.getImages(6);
+    // this.apiService.getImages();
 
   }
 
@@ -48,24 +47,28 @@ export class RegisterUserComponent implements OnInit {
   registerUser() {
 
     if (this.formValidation()) {
-      this.apiService.userRegister(this.user);
-      this.user = {
-        firstName: '',
-        lastName: '',
-        gender: '',
-        address: '',
-        email: '',
-        password: '',
-        addedItems: [],
-        cartItems: [],
-        orderedItems: [],
-        userRole: ''
-      };
-      this.showAlertSuccess = true;
-      setTimeout(() => {
-        this.router.navigate(['/'])
-
-      }, 1000)
+      this.apiService.userRegister(this.user).then(()=>{
+        this.user = {
+          firstName: '',
+          lastName: '',
+          gender: '',
+          address: '',
+          email: '',
+          password: '',
+          addedItems: [],
+          cartItems: [],
+          orderedItems: [],
+          userRole: ''
+        };
+        this.showAlertSuccess = false;
+        console.log('this.sharedVariable.user',this.sharedVariable.user);
+        
+        setTimeout(() => {
+          this.router.navigate(['/'])
+  
+        }, 1000)
+      })
+     
 
     } else {
       this.showAlert = true;

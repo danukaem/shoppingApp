@@ -14,6 +14,8 @@ import { SigninUserComponent } from './components/signin-user/signin-user.compon
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialsModule } from './materials.module';
 import { AddItemComponent } from './components/add-item/add-item.component';
+import { ViewItemsComponent } from './components/view-items/view-items.component';
+import { ImageSliderComponent } from './components/view-items/image-slider/image-slider.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { AddItemComponent } from './components/add-item/add-item.component';
     FooterComponent,
     RegisterUserComponent,
     SigninUserComponent,
-    AddItemComponent
+    AddItemComponent,
+    ViewItemsComponent,
+    ImageSliderComponent
   ],
   imports: [
     BrowserModule,

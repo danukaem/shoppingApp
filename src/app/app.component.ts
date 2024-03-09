@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { initializeApp } from 'firebase/app';
 import { environment } from '../environments/environment';
 import { getDatabase, ref, get, set, update, onValue ,child, push ,remove} from 'firebase/database';
+import { SharedVariablesService } from './services/shared-variables.service';
+import { ApiService } from './services/api.service';
 
 
 
@@ -12,10 +14,13 @@ import { getDatabase, ref, get, set, update, onValue ,child, push ,remove} from 
 })
 export class AppComponent implements OnInit {
 
-  constructor() {
+  constructor(public readonly sharedVariableService: SharedVariablesService, private readonly apiService: ApiService) {
   }
   ngOnInit(): void {
-    this.writeData();
+    // this.writeData();
+    
+    this.sharedVariableService.user =JSON.parse(localStorage.getItem('user')!);
+
   }
 
   writeData() {

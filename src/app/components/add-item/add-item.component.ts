@@ -71,9 +71,12 @@ export class AddItemComponent implements OnInit {
       for (let i = 0; i < this.uploadedFiles.length; i++) {
         const fileId = this.sharedService.generateRandomId(20);
         this.item.fileIds.push(fileId);
-        this.apiService.convertImageToBase64(this.uploadedFiles[i]).then((base64String: string) => {
-          this.apiService.imageUpload(fileId, this.uploadedFiles[i]['name'], base64String, this.item).then(() => {
+        this.apiService.convertImageToBase64(this.uploadedFiles[i]).then((fileBase64String: string) => {
+          this.apiService.imageUpload(fileId, this.uploadedFiles[i]['name'], fileBase64String, this.item).then(() => {
             this.apiService.addItem(this.item).then(() => {
+
+              this.sharedVariableService.user?.addedItems.push({itemId:itemId,placedOrderDetails:[]})
+              this.apiService.userRegister(this.sharedVariableService.user!);
 
               this.uploadedFiles = [];
               this.item = {...this.initialItem}

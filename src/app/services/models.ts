@@ -24,8 +24,7 @@ export interface CartItemDetails { // details about the items that i put to cart
 }
 export interface AddedItemDetails { // details about the items that i added to the store
   itemId: string,
-  quantity: number,
-  placedOrderDetails: PlacedOrderDetail[],
+  placedOrderDetails: PlacedOrderDetail[],// details about the items that buyer placed orders
 
 }
 export interface PlacedOrderDetail { // details about the items that buyer placed orders
@@ -63,5 +62,5 @@ export interface Item {
 export interface File{
   fileId:string,
   fileName:string,
-  base64String:string
+  fileBase64String:string
 }

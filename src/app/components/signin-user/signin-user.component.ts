@@ -9,7 +9,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class SigninUserComponent {
 
-  username: string = '';
+  email: string = '';
   password: string = '';
 
 
@@ -18,7 +18,7 @@ export class SigninUserComponent {
   constructor(private readonly apiService: ApiService, private readonly router: Router) { }
 
   signin() {
-    this.apiService.userSignin(this.username, this.password).then((res) => {
+    this.apiService.userSignin(this.email, this.password).then((res) => {
 
       if (res) {
         this.router.navigate(['/'])

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SharedVariablesService } from 'src/app/services/shared-variables.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { SharedVariablesService } from 'src/app/services/shared-variables.servic
 export class NavbarComponent implements OnInit {
 
   username;
-  constructor(public sharedVariable: SharedVariablesService){
+  constructor(public sharedVariable: SharedVariablesService,private router:Router){
 
 
     console.log('user',this.sharedVariable.user);
@@ -18,18 +19,16 @@ export class NavbarComponent implements OnInit {
   
   }
   ngOnInit(): void {
+    this.username = localStorage.getItem('email')+'';
+  }
 
-    this.username = localStorage.getItem('username')+'';
+  logout(){
 
-    console.log('username::::::::::::::::::',this.username);
-    
-    // if( this.sharedVariable.user?.username != undefined){
-    //   this.sharedVariable.user?.username = ''
+    localStorage.clear();
+    this.router.navigate(['/'])
 
-    // }
-    // this.sharedVariable.user?.username = ''
-    // this.sharedVariable.user?.username = localStorage.getItem('username')+''
-    // this.sharedVariable.user = {...this.sharedVariable.user,username:localStorage.getItem('username')+''}
+    setTimeout(()=>{window.location.reload();},100)
+    // this.router.navigate(['/signin'])
 
   }
 
