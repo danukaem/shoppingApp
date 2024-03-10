@@ -122,4 +122,11 @@ export class ApiService {
     return get(dataRef);
   }
 
+
+  getAssets(): Promise<any> {
+    const app = initializeApp(environment.firebase);
+    const db = getDatabase(app);
+    const dataRef = ref(db, `assets/`);
+    return get(dataRef);
+  }
 }

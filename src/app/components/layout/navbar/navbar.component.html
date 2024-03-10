@@ -4,8 +4,7 @@
             <div class="container-fluid icon-div">
                 <div class="row align-self-center">
                     <span class="navbar-brand col-4 nav-text home-img-span">
-                        <img src="../../../../assets/DK.png" class="home-img">
-
+                        <img *ngIf="siteLogo" [src]="siteLogo['fileBase64String']" class="home-img">
                     </span>
                     <a *ngIf="username == undefined || username== null||username== 'null'"
                         class="navbar-brand col-4 nav-text" [routerLink]="['/signin']">
