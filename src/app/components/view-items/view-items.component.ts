@@ -27,7 +27,7 @@ export class ViewItemsComponent implements OnInit {
       this.apiService.getItem(addedItem.itemId).then((item: any) => {
 
         if (item.exists()) {
-          this.sharedVariableService.items.push(item.val());
+          this.sharedVariableService.yourItems.push(item.val());
           itemWithImages['item'] = item.val()
 
           for (let fileId of item.val().fileIds) {

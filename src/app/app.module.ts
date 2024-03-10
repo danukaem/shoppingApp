@@ -16,6 +16,7 @@ import { MaterialsModule } from './materials.module';
 import { AddItemComponent } from './components/add-item/add-item.component';
 import { ViewItemsComponent } from './components/view-items/view-items.component';
 import { ImageSliderComponent } from './components/view-items/image-slider/image-slider.component';
+import { ViewAllItemsComponent } from './components/view-all-items/view-all-items.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ImageSliderComponent } from './components/view-items/image-slider/image
     SigninUserComponent,
     AddItemComponent,
     ViewItemsComponent,
-    ImageSliderComponent
+    ImageSliderComponent,
+    ViewAllItemsComponent
   ],
   imports: [
     BrowserModule,

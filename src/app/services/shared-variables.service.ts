@@ -21,7 +21,10 @@ export class SharedVariablesService {
 
   files: File[] = [];
 
-  items: Item[] = [];
+  yourItems: Item[] = [];
+
+  allItems: Item[] = [];
+
 
 
   constructor() { }
