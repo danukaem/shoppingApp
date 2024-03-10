@@ -6,7 +6,18 @@ import { User, File, Item } from './models';
 })
 export class SharedVariablesService {
 
-  user: User | undefined = undefined;
+  user: User = {
+    email: '',
+    firstName: '',
+    lastName: '',
+    gender: '',
+    address: '',
+    password: '',
+    addedItems: [],
+    cartItems: [],
+    orderedItems: [],
+    userRole: ''
+  };
 
   files: File[] = [];
 

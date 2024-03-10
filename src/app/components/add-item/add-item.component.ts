@@ -11,7 +11,7 @@ import { SharedService } from 'src/app/services/shared.service';
 })
 export class AddItemComponent implements OnInit {
 
-  initialItem ={
+  initialItem = {
     itemId: '',
     fileIds: [],
     name: '',
@@ -36,7 +36,7 @@ export class AddItemComponent implements OnInit {
     countryManufactured: '',
     itemOwnerUserId: ''
   }
-  item: Item = {...this.initialItem}
+  item: Item = { ...this.initialItem }
 
 
   image64String: any[] = [];
@@ -60,12 +60,14 @@ export class AddItemComponent implements OnInit {
 
 
   addItem() {
+
+    if (!this.sharedVariableService.user.addedItems) {
+      this.sharedVariableService.user.addedItems = []
+    }
+
     const itemId = this.sharedService.generateRandomId(20);
-
     this.item.itemId = itemId;
-
-    // this.item.itemOwnerUserId = this.sharedVariableService.user?.email!
-
+    this.item.itemOwnerUserId = this.sharedVariableService.user.email
 
     if (this.uploadedFiles.length > 0) {
       for (let i = 0; i < this.uploadedFiles.length; i++) {
@@ -74,12 +76,10 @@ export class AddItemComponent implements OnInit {
         this.apiService.convertImageToBase64(this.uploadedFiles[i]).then((fileBase64String: string) => {
           this.apiService.imageUpload(fileId, this.uploadedFiles[i]['name'], fileBase64String, this.item).then(() => {
             this.apiService.addItem(this.item).then(() => {
-
-              this.sharedVariableService.user?.addedItems.push({itemId:itemId,placedOrderDetails:[]})
+              localStorage.setItem('user', JSON.stringify(this.sharedVariableService.user))
               this.apiService.userRegister(this.sharedVariableService.user!);
-
               this.uploadedFiles = [];
-              this.item = {...this.initialItem}
+              this.item = { ...this.initialItem }
             });
 
           });
@@ -87,11 +87,13 @@ export class AddItemComponent implements OnInit {
           console.error(e)
         })
       }
+      this.sharedVariableService.user.addedItems.push({ itemId: itemId, placedOrderDetails: [] });
+
     } else {
       this.apiService.addItem(this.item).then(() => {
         this.uploadedFiles = [];
 
-        this.item = {...this.initialItem}
+        this.item = { ...this.initialItem }
       })
 
     }

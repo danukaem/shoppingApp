@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { initializeApp } from 'firebase/app';
 import { environment } from '../environments/environment';
-import { getDatabase, ref, get, set, update, onValue ,child, push ,remove} from 'firebase/database';
+import { getDatabase, ref, get, set, update, onValue, child, push, remove } from 'firebase/database';
 import { SharedVariablesService } from './services/shared-variables.service';
 import { ApiService } from './services/api.service';
 
@@ -18,9 +18,7 @@ export class AppComponent implements OnInit {
   }
   ngOnInit(): void {
     // this.writeData();
-    
-    this.sharedVariableService.user =JSON.parse(localStorage.getItem('user')!);
-
+    this.sharedVariableService.user = JSON.parse(localStorage.getItem('user')!);
   }
 
   writeData() {
@@ -70,7 +68,7 @@ export class AppComponent implements OnInit {
     //   email: 'email',
     //   profile_picture : 'imageUrl'
     // });
-    
+
     // get(child(dataRef, `users`)).then((snapshot) => {
     //   if (snapshot.exists()) {
     //     console.log(snapshot.val());
@@ -81,21 +79,21 @@ export class AppComponent implements OnInit {
     //   console.error(error);
     // });
 
-//     let a ;
-//     get( dataRef ).then((snapshot) => {
-//       if (snapshot.exists()) {
-//         console.log(snapshot.val());
-//         a=JSON.parse(snapshot.val());
-// console.log(a);
+    //     let a ;
+    //     get( dataRef ).then((snapshot) => {
+    //       if (snapshot.exists()) {
+    //         console.log(snapshot.val());
+    //         a=JSON.parse(snapshot.val());
+    // console.log(a);
 
-//       } else {
-//         console.log("No data available");
-//       }
-//     }).catch((error) => {
-//       console.error(error);
-//     });
+    //       } else {
+    //         console.log("No data available");
+    //       }
+    //     }).catch((error) => {
+    //       console.error(error);
+    //     });
 
-// console.log(a);
+    // console.log(a);
 
 
 
@@ -110,16 +108,15 @@ export class AppComponent implements OnInit {
     //   time:new Date().toTimeString()
     // });
 
-// remove???????
+    // remove???????
     ////////////////////////////////////////////////////////////
 
 
     get(ref(db, 'users/danukaem1234/testDetails')).then((snapshot) => {
       if (snapshot.exists()) {
         const data = snapshot.val();
-        console.log('-----------------------------',data);
       } else {
-        console.log('-----------------------------No data available');
+        console.log('No data available');
       }
     });
 
