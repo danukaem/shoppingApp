@@ -10,4 +10,5 @@
 
 .image-slider-style{
     max-height: 169px;
+    min-height: 169px;
 }
