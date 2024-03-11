@@ -30,3 +30,7 @@
     height: 5vh;
 }
 
+.logout-btn{
+    background-color: transparent !important;
+    border: none;
+}

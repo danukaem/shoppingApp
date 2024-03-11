@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Item } from 'src/app/services/models';
 
 @Component({
@@ -6,10 +6,19 @@ import { Item } from 'src/app/services/models';
   templateUrl: './image-slider.component.html',
   styleUrls: ['./image-slider.component.css']
 })
-export class ImageSliderComponent {
+export class ImageSliderComponent implements OnInit{
 
   @Input() itemWithImages: any = { item: {}, files: [] };
   i = 0;
+
+
+  constructor(){
+   
+    
+  }
+  ngOnInit(): void {
+    console.log('itemWithImages',this.itemWithImages);
+  }
 
   slideImages(action: string) {
     if (this.itemWithImages.files.length > this.i && this.i > -1) {

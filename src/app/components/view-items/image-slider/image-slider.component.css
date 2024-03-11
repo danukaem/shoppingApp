@@ -1,14 +1,49 @@
-.carousel-control-prev{
+.carousel-control-prev {
     background: rgb(235, 215, 245);
 }
 
-.carousel-control-next{
+.carousel-control-next {
     background: rgb(235, 215, 245);
 
 }
 
 
-.image-slider-style{
+.image-slider-style {
     max-height: 169px;
     min-height: 169px;
+}
+
+.add-to-cart-button {
+    background-color: orange;
+}
+
+.view-button {
+    margin: 5px;
+    background-color: greenyellow;
+
+}
+
+.add-to-cart-button {
+    margin: 5px;
+
+}
+
+.remove-button {
+    margin: 5px;
+    background-color: red;
+}
+
+.edit-button {
+    margin: 5px;
+    background-color: rgb(9, 129, 241);
+}
+
+.card-title {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.card-text {
+    font-size: 12px;
+    color: gray;
 }
