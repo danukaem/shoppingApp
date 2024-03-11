@@ -61,7 +61,6 @@ export class RegisterUserComponent implements OnInit {
           userRole: ''
         };
         this.showAlertSuccess = false;
-        console.log('this.sharedVariable.user',this.sharedVariable.user);
         
         setTimeout(() => {
           this.router.navigate(['/'])

@@ -27,8 +27,9 @@
         <h5>Rs.{{itemWithImages.item.price}}</h5>
         <a mat-mini-fab color="primary" class="view-button"><mat-icon>visibility</mat-icon> </a>
         <a mat-mini-fab color="primary" class="add-to-cart-button"><mat-icon>shopping_cart</mat-icon></a>
-        <a mat-mini-fab color="primary" class="edit-button"><mat-icon>edit</mat-icon></a>
-        <a mat-mini-fab color="primary" class="remove-button"><mat-icon>delete</mat-icon></a>
+        <a mat-mini-fab color="primary" class="edit-button"  (click)="edit(itemWithImages)"><mat-icon>edit</mat-icon></a>
+        <a mat-mini-fab color="primary" class="remove-button" (click)="removeItem(itemWithImages.item)"><mat-icon>delete</mat-icon></a>
+
 
 
     </div>

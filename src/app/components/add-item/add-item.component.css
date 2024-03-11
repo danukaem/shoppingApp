@@ -1,41 +1,92 @@
 .example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-  }
-  
-  .example-full-width {
-    width: 100%;
-  }
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
 
-  section {
-    display: table;
-  }
-  
-  .example-label {
-    display: table-cell;
-    font-size: 14px;
-    margin-left: 8px;
-    min-width: 120px;
-  }
-  
-  .example-button-row {
-    display: table-cell;
-    max-width: 600px;
-  }
-  
-  .example-button-row .mat-mdc-button-base {
-    margin: 8px 8px 8px 0;
-  }
-  
-  .example-flex-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-  
-  .example-button-container {
-    display: flex;
-    justify-content: center;
-    width: 120px;
-  }
+.example-full-width {
+  width: 100%;
+}
+
+section {
+  display: table;
+}
+
+.example-label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+}
+
+.example-button-row {
+  display: table-cell;
+  max-width: 600px;
+}
+
+.example-button-row .mat-mdc-button-base {
+  margin: 8px 8px 8px 0;
+}
+
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}
+
+
+.carousel-control-prev {
+  background: rgb(235, 215, 245);
+}
+
+.carousel-control-next {
+  background: rgb(235, 215, 245);
+
+}
+
+
+.image-slider-style {
+  max-height: 300px;
+  min-height: 300px;
+}
+
+.add-to-cart-button {
+  background-color: orange;
+}
+
+.view-button {
+  margin: 5px;
+  background-color: greenyellow;
+
+}
+
+.add-to-cart-button {
+  margin: 5px;
+
+}
+
+.remove-button {
+  margin: 5px;
+  background-color: red;
+}
+
+.edit-button {
+  margin: 5px;
+  background-color: rgb(9, 129, 241);
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.card-text {
+  font-size: 12px;
+  color: gray;
+}

@@ -16,6 +16,16 @@ export class ViewItemsComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.sharedVariableService.deleteEditSubject.subscribe((res:any)=>{
+      this.loadItems();
+    })
+   this.loadItems();
+  }
+
+
+  loadItems(){
+
+    this.itemsWithImages=[];
     if (!this.sharedVariableService.user.addedItems) {
       this.sharedVariableService.user.addedItems = [];
     }

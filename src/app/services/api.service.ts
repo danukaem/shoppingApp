@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { initializeApp } from 'firebase/app';
 import { environment } from '../../environments/environment';
-import { getDatabase, ref, child, get, set, push, Database } from 'firebase/database';
+import { getDatabase, ref, child, get, set, push, Database, remove } from 'firebase/database';
 import { collection, getDocs } from "firebase/firestore";
 import { Item, User } from './models';
 import { SharedVariablesService } from './shared-variables.service';
@@ -115,6 +115,24 @@ export class ApiService {
     return get(dataRef);
   }
 
+  removeItem(itemId:string) : Promise<any>{
+
+    const app = initializeApp(environment.firebase);
+    const db = getDatabase(app);
+    const dataRef = ref(db, `items/${itemId}`);
+    return remove(dataRef) 
+
+  }
+
+  removeFile(fileIdId:string) : Promise<any>{
+
+    const app = initializeApp(environment.firebase);
+    const db = getDatabase(app);
+    const dataRef = ref(db, `files/${fileIdId}`);
+    return remove(dataRef) 
+
+  }
+
   getAllItem(): Promise<any> {
     const app = initializeApp(environment.firebase);
     const db = getDatabase(app);
@@ -129,4 +147,17 @@ export class ApiService {
     const dataRef = ref(db, `assets/`);
     return get(dataRef);
   }
+
+  updateuser(user:User){
+    let emailFirstPartFirstPart = user['email'].split('@')[0]
+    const app = initializeApp(environment.firebase);
+    const db = getDatabase(app);
+    const dataRef = ref(db, `users/${emailFirstPartFirstPart}_${user['password']}`);
+    localStorage.setItem('uemailpassword', `${emailFirstPartFirstPart}_${user['password']}`);
+    
+    return set(dataRef, this.sharedVariable.user);
+  }
 }
+
+
+ 

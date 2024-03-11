@@ -6,11 +6,11 @@ import { SharedVariablesService } from 'src/app/services/shared-variables.servic
 import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
-  selector: 'app-add-item',
-  templateUrl: './add-item.component.html',
-  styleUrls: ['./add-item.component.css']
+  selector: 'app-edit-item',
+  templateUrl: './edit-item.component.html',
+  styleUrls: ['./edit-item.component.css']
 })
-export class AddItemComponent implements OnInit {
+export class EditItemComponent implements OnInit {
 
   initialItem = {
     itemId: '',
@@ -41,7 +41,9 @@ export class AddItemComponent implements OnInit {
 
   uploadedFiles = [];
 
-  uploadedImageBase64List: { fileId: string, fileName: string, fileBase64String: string }[] = []
+  uploadedImageBase64List: { fileId: string, fileName: string, fileBase64String: string }[] = [];
+
+  removedImages: { fileId: string, fileName: string, fileBase64String: string }[] = []
 
   i = 0;
 
@@ -50,66 +52,58 @@ export class AddItemComponent implements OnInit {
     private readonly sharedVariableService: SharedVariablesService,
     private readonly sharedService: SharedService,
     private readonly router:Router
-  ) { }
-  ngOnInit(): void {
-  }
+  ) {
 
+  }
+  ngOnInit(): void {
+    if (this.sharedVariableService.editItem) {
+      this.item = this.sharedVariableService.editItem['item']
+      this.uploadedImageBase64List = this.sharedVariableService.editItem['files']
+    }
+
+  }
   uploadFile(event: any) {
     this.uploadedFiles = event.target.files;
     if (this.uploadedFiles.length > 0) {
       for (let i = 0; i < this.uploadedFiles.length; i++) {
+        const fileId = this.sharedService.generateRandomId(20);
+
         this.apiService.convertImageToBase64(this.uploadedFiles[i]).then((fileBase64String: string) => {
-          this.uploadedImageBase64List.push({ fileId: '', fileName: this.uploadedFiles[i]['name'], fileBase64String: fileBase64String })
+          this.uploadedImageBase64List.push({ fileId: fileId, fileName: this.uploadedFiles[i]['name'], fileBase64String: fileBase64String })
 
         })
 
       }
     }
+
   }
 
 
-  addItem() {
+  editItem() {
 
-    if (!this.sharedVariableService.user.addedItems) {
-      this.sharedVariableService.user.addedItems = []
+    for (let i of this.removedImages) {
+      this.apiService.removeFile(i.fileId).then();
+
     }
+    this.item.fileIds = []
 
-    const itemId = this.sharedService.generateRandomId(20);
-    this.item.itemId = itemId;
-    this.item.itemOwnerUserId = this.sharedVariableService.user.email
+    for (let i of this.uploadedImageBase64List) {
+      this.item.fileIds.push(i.fileId);
+      this.apiService.imageUpload(i.fileId, i.fileName, i.fileBase64String, this.item).then(() => {
 
-    if (this.uploadedFiles.length > 0) {
-      for (let i = 0; i < this.uploadedFiles.length; i++) {
-        const fileId = this.sharedService.generateRandomId(20);
-        this.item.fileIds.push(fileId);
-        this.apiService.convertImageToBase64(this.uploadedFiles[i]).then((fileBase64String: string) => {
-          this.apiService.imageUpload(fileId, this.uploadedFiles[i]['name'], fileBase64String, this.item).then(() => {
-            this.apiService.addItem(this.item).then(() => {
-              localStorage.setItem('user', JSON.stringify(this.sharedVariableService.user))
-              this.apiService.userRegister(this.sharedVariableService.user!);
-              this.uploadedFiles = [];
-              this.item = { ...this.initialItem }
-
-              this.router.navigate(['/'])
-            });
-
-          });
-        }).catch((e: any) => {
-          console.error(e)
-        })
-      }
-      this.sharedVariableService.user.addedItems.push({ itemId: itemId, placedOrderDetails: [] });
-
-    } else {
+      });
       this.apiService.addItem(this.item).then(() => {
         this.uploadedFiles = [];
 
-        this.item = { ...this.initialItem };
+        this.item = { ...this.initialItem }
         this.router.navigate(['/'])
 
       })
 
     }
+
+
+
 
 
   }
@@ -128,4 +122,12 @@ export class AddItemComponent implements OnInit {
     }
   }
 
+  removeItem(i: { fileId: string, fileName: string, fileBase64String: string }, x: number) {
+    this.slideImages('-');
+
+    this.removedImages.push(i);
+    this.uploadedImageBase64List = this.uploadedImageBase64List.filter((val: any) => { return val.fileId != i.fileId })
+
+
+  }
 }

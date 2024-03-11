@@ -7,26 +7,31 @@
                         <form>
                             <div class="mb-3">
                                 <label for="formFile" class="form-label">Images</label>
-                                <input class="form-control" type="file" (change)="uploadFile($event)"  multiple>
+                                <input class="form-control" type="file" (change)="uploadFile($event)" multiple>
                             </div>
-                            
+
                             <div>
                                 <div class="carousel slide" data-bs-ride="carousel">
                                     <div class="carousel slide" data-bs-ride="carousel">
-                            
+
                                         <div class="carousel-inner">
                                             <div class="carousel-item active" *ngIf="uploadedImageBase64List.length>0">
-                                                <img [src]="uploadedImageBase64List[i].fileBase64String" class="d-block w-100 image-slider-style"
-                                                    alt="...">
+                                                <img [src]="uploadedImageBase64List[i].fileBase64String"
+                                                    class="d-block w-100 image-slider-style" alt="...">
+                                                <a mat-mini-fab color="primary" class="remove-button"
+                                                    (click)="removeItem(uploadedImageBase64List[i],i)"><mat-icon>delete</mat-icon></a>
+
                                             </div>
-                            
+
                                         </div>
-                                        <button class="carousel-control-prev" type="button" data-bs-slide="prev" (click)="slideImages('-')">
-                            
+                                        <button class="carousel-control-prev" type="button" data-bs-slide="prev"
+                                            (click)="slideImages('-')">
+
                                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                             <span class="visually-hidden">Previous</span>
                                         </button>
-                                        <button class="carousel-control-next" type="button" data-bs-slide="next" (click)="slideImages('+')">
+                                        <button class="carousel-control-next" type="button" data-bs-slide="next"
+                                            (click)="slideImages('+')">
                                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                             <span class="visually-hidden">Next</span>
                                         </button>
@@ -36,48 +41,58 @@
 
                             <div class="mb-3">
                                 <label class="form-label">Item name</label>
-                                <input name="abc" [(ngModel)]="item.name" type="text"   name="item.name"   class="form-control">
+                                <input name="abc" [(ngModel)]="item.name" name="item.name" type="text"
+                                    class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Condition</label>
-                                <input name="abc" [(ngModel)]="item.condition" type="text"   name="item.condition"   class="form-control">
+                                <input name="abc" [(ngModel)]="item.condition" name="item.condition" type="text"
+                                    class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">sale ends in</label>
-                                <input name="abc" [(ngModel)]="item.saleEnd" type="text"   name="item.saleEnd"   class="form-control">
+                                <input name="abc" [(ngModel)]="item.saleEnd" name="item.saleEnd" type="text"
+                                    class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Quantity</label>
-                                <input name="abc" [(ngModel)]="item.quantity" type="text"   name="item.namquantitye"   class="form-control">
+                                <input name="abc" [(ngModel)]="item.quantity" name="item.quantity" type="text"
+                                    class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Price</label>
-                                <input name="abc" [(ngModel)]="item.price" type="text"   name="item.price"   class="form-control">
+                                <input name="abc" [(ngModel)]="item.price" name="item.price" type="text"
+                                    class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Postage</label>
-                                <input name="abc" [(ngModel)]="item.postage" type="text"   name="item.postage"   class="form-control">
+                                <input name="abc" [(ngModel)]="item.postage" name="item.postage" type="text"
+                                    class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Delivary</label>
-                                <input name="abc" [(ngModel)]="item.delivery" type="text"   name="item.delivery"   class="form-control">
+                                <input name="abc" [(ngModel)]="item.delivery" name="item.delivery" type="text"
+                                    class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Returns</label>
-                                <input name="abc" [(ngModel)]="item.return" type="text"   name="item.return"   class="form-control">
+                                <input name="abc" [(ngModel)]="item.return" name="item.return" type="text"
+                                    class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Coverage</label>
-                                <input name="abc" [(ngModel)]="item.coverage" type="text"   name="item.coverage"   class="form-control">
+                                <input name="abc" [(ngModel)]="item.coverage" name="item.coverage" type="text"
+                                    class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Item specification</label>
-                                <input name="abc" [(ngModel)]="item.specification" type="text"   name="item.specification"   class="form-control">
+                                <input name="abc" [(ngModel)]="item.specification" name="item.specification" type="text"
+                                    class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Condition Description</label>
-                                <input name="abc" [(ngModel)]="item.conditionDescription" type="text"   name="item.conditionDescription"  
-                                    class="form-control">
+                                <input name="abc" [(ngModel)]="item.conditionDescription"
+                                    name="item.conditionDescription" type="text" class="form-control">
                             </div>
 
                         </form>
@@ -91,45 +106,52 @@
                 <div class="row justify-content-center align-items-center ">
                     <div class="col-12 col-md-8">
                         <form>
-
                             <div class="mb-3">
                                 <label class="form-label">Type</label>
-                                <input name="abc" [(ngModel)]="item.type" type="text"   name="item.type"   class="form-control">
+                                <input name="abc" [(ngModel)]="item.type" name="item.type" type="text"
+                                    class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Color</label>
-                                <input name="abc" [(ngModel)]="item.color" type="text"   name="item.color"   class="form-control">
+                                <input name="abc" [(ngModel)]="item.color" name="item.color" type="text"
+                                    class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Gender</label>
-                                <input name="abc" [(ngModel)]="item.gender" type="text"   name="item.gender"   class="form-control">
+                                <input name="abc" [(ngModel)]="item.gender" name="item.gender" type="text"
+                                    class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Description</label>
-                                <input name="abc" [(ngModel)]="item.description" type="text"   name="item.description"   class="form-control">
+                                <input name="abc" [(ngModel)]="item.description" name="item.description" type="text"
+                                    class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Brand</label>
-                                <input name="abc" [(ngModel)]="item.brand" type="text"   name="item.brand"   class="form-control">
+                                <input name="abc" [(ngModel)]="item.brand" name="item.brand" type="text"
+                                    class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Size</label>
-                                <input name="abc" [(ngModel)]="item.size" type="text"   name="item.size"   class="form-control">
+                                <input name="abc" [(ngModel)]="item.size" name="item.size" type="text"
+                                    class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Style</label>
-                                <input name="abc" [(ngModel)]="item.style" type="text"   name="item.style"   class="form-control">
+                                <input name="abc" [(ngModel)]="item.style" name="item.style" type="text"
+                                    class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Material</label>
-                                <input name="abc" [(ngModel)]="item.material" type="text"   name="item.material"   class="form-control">
+                                <input name="abc" [(ngModel)]="item.material" name="item.material" type="text"
+                                    class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Country/Region of Manufacture</label>
-                                <input name="abc" [(ngModel)]="item.countryManufactured" type="text"   name="item.countryManufactured"  
-                                    class="form-control">
+                                <input name="abc" [(ngModel)]="item.countryManufactured" name="item.countryManufactured"
+                                    type="text" class="form-control">
                             </div>
-                            <button type="button" class="btn btn-primary" (click)="addItem()">add item</button>
+                            <button type="button" class="btn btn-primary" (click)="editItem()">add item</button>
                         </form>
                     </div>
                 </div>

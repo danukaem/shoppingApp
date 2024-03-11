@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User, File, Item } from './models';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,11 @@ export class SharedVariablesService {
   yourItems: Item[] = [];
 
   allItems: Item[] = [];
+
+  editItem :any;
+
+
+  deleteEditSubject = new Subject<any>();
 
 
 

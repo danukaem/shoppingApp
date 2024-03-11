@@ -15,22 +15,23 @@ export class ViewAllItemsComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.sharedVariableService.deleteEditSubject.subscribe((res:any)=>{
+      this.loadItems();
+    })
+   this.loadItems();
+
+  }
+
+
+  loadItems(){
+    this.itemsWithImages =[];
     this.apiService.getAllItem().then((items: any) => {
       let addedItems = [];
       if (items.exists()) {
-
-        console.log('all items;', items.val());
-
         const keys = Object.keys(items.val());
-
-        console.log('keys:', keys);
-
         for (let key of keys) {
-
           addedItems.push(items.val()[key])
         }
-
-        console.log('addedItems:', addedItems);
 
         for (let item of addedItems) {
           let itemWithImages: any = { item: {}, files: [] };
@@ -64,7 +65,6 @@ export class ViewAllItemsComponent implements OnInit {
 
       }
     })
-
   }
 
 }
