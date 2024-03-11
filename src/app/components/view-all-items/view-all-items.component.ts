@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject, debounceTime } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
 import { Item } from 'src/app/services/models';
 import { SharedVariablesService } from 'src/app/services/shared-variables.service';
@@ -9,22 +10,54 @@ import { SharedVariablesService } from 'src/app/services/shared-variables.servic
   styleUrls: ['./view-all-items.component.css']
 })
 export class ViewAllItemsComponent implements OnInit {
-  itemsWithImages: { item: Item, files: File[] }[] = []
+  itemsWithImages: { item: Item, files: File[] }[] = [];
+  itemsWithImagesAll: { item: Item, files: File[] }[] = [];
+
+  searchKey = '';
+
+  searchSubject = new Subject<any>();
 
   constructor(public readonly sharedVariableService: SharedVariablesService, private readonly apiService: ApiService) { }
 
   ngOnInit(): void {
 
-    this.sharedVariableService.deleteEditSubject.subscribe((res:any)=>{
+    this.sharedVariableService.deleteEditSubject.subscribe((res: any) => {
       this.loadItems();
     })
-   this.loadItems();
+    this.loadItems();
+
+    this.searchSubject.pipe(debounceTime(1000)).subscribe((val: any) => {
+
+      if(val){
+        this.itemsWithImages = this.itemsWithImagesAll.filter((element: any) => {
+          return this.checkKeyInItem(element.item,val) ;
+        })
+      }else{
+        this.itemsWithImages = this.itemsWithImagesAll;
+      }
+     
+    })
+
+  }
+
+  checkKeyInItem(item:Item,val:string):boolean{
+
+     return item.name.includes(val) ||
+     item.condition.includes(val)||
+     item.specification.includes(val)||
+     item.conditionDescription.includes(val)||
+     item.type.includes(val)||
+     item.color.includes(val)||
+     item.description.includes(val)||
+     item.brand.includes(val)||
+     item.material.includes(val)||
+     item.countryManufactured.includes(val)
 
   }
 
 
-  loadItems(){
-    this.itemsWithImages =[];
+  loadItems() {
+    this.itemsWithImages = [];
     this.apiService.getAllItem().then((items: any) => {
       let addedItems = [];
       if (items.exists()) {
@@ -51,7 +84,10 @@ export class ViewAllItemsComponent implements OnInit {
                   console.error(e);
                 })
               }
-              this.itemsWithImages.push(itemWithImages)
+              this.itemsWithImages.push(itemWithImages);
+              this.itemsWithImagesAll = [ ...this.itemsWithImages ];
+              console.log('this.itemsWithImagesAll', this.itemsWithImagesAll);
+
             }
           }).catch((e: any) => {
             console.error(e);
@@ -61,10 +97,16 @@ export class ViewAllItemsComponent implements OnInit {
 
 
 
+
       } else {
 
       }
     })
+  }
+
+  search() {
+    this.searchSubject.next(this.searchKey);
+
   }
 
 }
