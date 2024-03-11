@@ -42,7 +42,7 @@ export class ViewAllItemsComponent implements OnInit {
 
   checkKeyInItem(item:Item,val:string):boolean{
 
-     return item.name.includes(val) ||
+     return (item.name.includes(val) ||
      item.condition.includes(val)||
      item.specification.includes(val)||
      item.conditionDescription.includes(val)||
@@ -51,7 +51,7 @@ export class ViewAllItemsComponent implements OnInit {
      item.description.includes(val)||
      item.brand.includes(val)||
      item.material.includes(val)||
-     item.countryManufactured.includes(val)
+     item.countryManufactured.includes(val))
 
   }
 
