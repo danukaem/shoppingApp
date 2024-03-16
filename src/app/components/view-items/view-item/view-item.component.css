@@ -1,0 +1,98 @@
+mat-grid-tile {
+  /* background: lightblue; */
+  border: 1px solid black;
+}
+
+.mat-grid-tile-content {
+  padding: 0 !important;
+  /* Override the default padding */
+}
+
+.description-p {
+  overflow-y: auto;
+  max-height: 140px;
+}
+
+.key-divs {
+  padding: 20px;
+}
+
+.buy-now-button {
+  background-color: red;
+  color: white;
+  margin: 5px;
+
+}
+
+.add-to-cart-button {
+  background-color: orange;
+  color: white;
+  margin: 5px;
+
+}
+
+.right-divs {
+  margin: 10px;
+}
+
+.quantity-input {
+  height: 50px;
+  border: none;
+  width: 100px;
+  text-align: center;
+  font-size: 25px;
+}
+
+.share-button {
+  background-color: rgb(126, 201, 13);
+  color: white;
+  margin: 5px;
+}
+
+.like-button {
+  background-color: rgb(253, 40, 157);
+  color: white;
+  margin: 5px;
+}
+
+.favorite-button {
+  background-color: rgb(238, 35, 160);
+  color: white;
+  margin: 5px;
+}
+
+.favorite-icon {
+  padding: 10px;
+  color: red;
+}
+
+.favorite-icon-svg {
+  background-color: red;
+}
+
+.favorite-div {
+  padding-top: 10px;
+}
+
+.image-small-img {
+  width: 100%;
+}
+
+.image-small-div {
+  padding: 1px;
+}
+
+.image-small-div-row {
+  overflow-y: auto;
+  max-height: 300px;
+}
+
+mat-divider {
+  padding: 10px;
+}
+
+
+
+.item-name-h1 {
+  background: #e7ecf1;
+}

@@ -62,8 +62,34 @@ export class ImageSliderComponent implements OnInit {
       this.sharedVariableService.deleteEditSubject.next('items deleted')
 
     });
+  }
 
+  addToCart(item:any,quantity:number){
+
+    if(!this.sharedVariableService.user.cartItems){
+      this.sharedVariableService.user.cartItems =[]
+    }
+
+    console.log('add to cart item',item);
     
+    this.sharedVariableService.user.cartItems.push(
+      {  
+        itemId: item.itemId,
+        quantity: quantity
+      }
+    );
+
+
+    console.log('this.sharedVariableService.user',this.sharedVariableService.user);
+    
+
+  }
+
+  viewItem(itemWithImages:any){
+    console.log('viewItem=======',itemWithImages);
+    this.sharedVariableService.viewItemData = itemWithImages;
+
+    this.router.navigate(['/viewItem'])
     
 
   }

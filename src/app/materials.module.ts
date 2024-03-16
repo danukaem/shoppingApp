@@ -12,6 +12,8 @@ import { FormsModule } from '@angular/forms';
 import {MatGridListModule} from '@angular/material/grid-list';
 
 
+
+
 @NgModule({
     declarations: [
     ],
@@ -37,6 +39,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
         MatDividerModule,
         MatButtonModule,
         FormsModule,
-        MatGridListModule]
+        MatGridListModule
+    
+    ]
 })
 export class MaterialsModule { }

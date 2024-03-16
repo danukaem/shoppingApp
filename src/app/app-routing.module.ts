@@ -7,6 +7,7 @@ import { AddItemComponent } from './components/add-item/add-item.component';
 import { ViewItemsComponent } from './components/view-items/view-items.component';
 import { ViewAllItemsComponent } from './components/view-all-items/view-all-items.component';
 import { EditItemComponent } from './components/edit-item/edit-item.component';
+import { ViewItemComponent } from './components/view-items/view-item/view-item.component';
 
 const routes: Routes = [
   {
@@ -14,8 +15,11 @@ const routes: Routes = [
       { path: '', component: ViewAllItemsComponent },
       { path: 'addItem', component: AddItemComponent },
       { path: 'editItem', component: EditItemComponent },
-      { path: 'viewItem', component: ViewItemsComponent },
+      { path: 'viewItems', component: ViewItemsComponent },
       { path: 'viewAllItems', component: ViewAllItemsComponent },
+      { path: 'viewItem', component: ViewItemComponent },
+
+      
     ]
   },
   { path: 'register', component: RegisterUserComponent },

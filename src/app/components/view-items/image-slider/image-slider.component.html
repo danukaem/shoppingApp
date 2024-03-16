@@ -25,8 +25,8 @@
         <h5 class="card-title">{{itemWithImages.item.condition}}</h5>
         <p class="card-text">{{itemWithImages.item.description}}</p>
         <h5>Rs.{{itemWithImages.item.price}}</h5>
-        <a mat-mini-fab color="primary" class="view-button"><mat-icon>visibility</mat-icon> </a>
-        <a mat-mini-fab color="primary" class="add-to-cart-button"><mat-icon>shopping_cart</mat-icon></a>
+        <a mat-mini-fab color="primary" class="view-button" (click)="viewItem(itemWithImages)" ><mat-icon>visibility</mat-icon> </a>
+        <a mat-mini-fab color="primary" class="add-to-cart-button" (click)="addToCart(itemWithImages.item,1)"><mat-icon>shopping_cart</mat-icon></a>
         <a mat-mini-fab color="primary" class="edit-button"  (click)="edit(itemWithImages)"><mat-icon>edit</mat-icon></a>
         <a mat-mini-fab color="primary" class="remove-button" (click)="removeItem(itemWithImages.item)"><mat-icon>delete</mat-icon></a>
 

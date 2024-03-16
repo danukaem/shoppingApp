@@ -42,16 +42,16 @@ export class ViewAllItemsComponent implements OnInit {
 
   checkKeyInItem(item:Item,val:string):boolean{
 
-     return (item.name.includes(val) ||
-     item.condition.includes(val)||
-     item.specification.includes(val)||
-     item.conditionDescription.includes(val)||
-     item.type.includes(val)||
-     item.color.includes(val)||
-     item.description.includes(val)||
-     item.brand.includes(val)||
-     item.material.includes(val)||
-     item.countryManufactured.includes(val))
+     return (item.name.toLowerCase().includes(val.toLowerCase()) ||
+     item.condition.toLowerCase().includes(val.toLowerCase())||
+     item.specification.toLowerCase().includes(val.toLowerCase())||
+     item.conditionDescription.toLowerCase().includes(val.toLowerCase())||
+     item.type.toLowerCase().includes(val.toLowerCase())||
+     item.color.toLowerCase().includes(val.toLowerCase())||
+     item.description.toLowerCase().includes(val.toLowerCase())||
+     item.brand.toLowerCase().includes(val.toLowerCase())||
+     item.material.toLowerCase().includes(val.toLowerCase())||
+     item.countryManufactured.toLowerCase().includes(val.toLowerCase()))
 
   }
 

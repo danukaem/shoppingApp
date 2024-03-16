@@ -18,6 +18,7 @@ import { ViewItemsComponent } from './components/view-items/view-items.component
 import { ImageSliderComponent } from './components/view-items/image-slider/image-slider.component';
 import { ViewAllItemsComponent } from './components/view-all-items/view-all-items.component';
 import { EditItemComponent } from './components/edit-item/edit-item.component';
+import { ViewItemComponent } from './components/view-items/view-item/view-item.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { EditItemComponent } from './components/edit-item/edit-item.component';
     ViewItemsComponent,
     ImageSliderComponent,
     ViewAllItemsComponent,
-    EditItemComponent
+    EditItemComponent,
+    ViewItemComponent
   ],
   imports: [
     BrowserModule,

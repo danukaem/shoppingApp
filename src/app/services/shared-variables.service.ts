@@ -27,9 +27,36 @@ export class SharedVariablesService {
   allItems: Item[] = [];
 
   editItem :any;
+  viewItemData:any;
 
 
   deleteEditSubject = new Subject<any>();
+
+  itemKeyMap:any = {
+    itemId:'Item Id',
+    fileIds: 'File Ids' , 
+    name: 'Name',
+    condition: 'Condition',
+    saleEnd: 'Sale ends',
+    quantity: 'Quantity',
+    price: 'Price',
+    postage: 'Postage',
+    delivery: 'Delivery',
+    return: 'Return',
+    coverage: 'Coverage',
+    specification: 'specification',
+    conditionDescription: 'Condition Description',
+    type: 'Type',
+    color: 'Color',
+    gender: 'Gender',
+    description: 'Description',
+    brand: 'Brand',
+    size: 'Size',
+    style: 'Style',
+    material: 'Material',
+    countryManufactured: 'Country Manufactured',
+    itemOwnerUserId: 'Item Owner UserId'
+  };
 
 
 

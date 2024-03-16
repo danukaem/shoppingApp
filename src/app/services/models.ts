@@ -15,7 +15,7 @@ export interface User {
 export interface OrderItemDetails { // details about the items that i ordered
   itemId: string,
   quantity: number,
-  orderStatus: string
+  orderStatus: string // orderPlaced,orderConfirmed,orderPacked,orderShipped,orderRecieved
 }
 
 export interface CartItemDetails { // details about the items that i put to cart
