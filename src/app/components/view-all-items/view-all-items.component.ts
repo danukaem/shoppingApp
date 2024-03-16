@@ -41,7 +41,6 @@ export class ViewAllItemsComponent implements OnInit {
   }
 
   checkKeyInItem(item:Item,val:string):boolean{
-
      return (item.name.toLowerCase().includes(val.toLowerCase()) ||
      item.condition.toLowerCase().includes(val.toLowerCase())||
      item.specification.toLowerCase().includes(val.toLowerCase())||
