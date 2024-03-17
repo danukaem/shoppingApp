@@ -54,13 +54,6 @@ export class CartItemRowComponent implements OnInit {
     this.quantity = this.quantity + qty;
     if (this.quantity < 0) { this.quantity = 0 }
 
-
-    // console.log('888888888888888888888888888itemWithImages',this.itemWithImages);
-    // console.log('888888888888888888888888888itemWithImages',this.itemWithImages['item']['itemId']);
-    // console.log('888888888888888888888888888itemWithImages',this.itemWithImages['quantity']);
-    
-    // this.itemWithImages['quantity'] = this.quantity
-    
     this.sharedVariableService.user.cartItems.map((val:any)=>{
       if(val['itemId'] ==this.itemWithImages['item']['itemId']){
         val['quantity'] =this.quantity;
