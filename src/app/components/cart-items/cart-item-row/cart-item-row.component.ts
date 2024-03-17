@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { SharedVariablesService } from 'src/app/services/shared-variables.service';
@@ -16,7 +16,7 @@ export class CartItemRowComponent implements OnInit {
 
   quantity = 0;
 
-
+  @Output() quantityEvent = new EventEmitter<any>();
 
   constructor(
     private readonly router: Router,
@@ -26,10 +26,7 @@ export class CartItemRowComponent implements OnInit {
 
   ngOnInit(): void {
     this.quantity = this.itemWithImages['quantity']
-
   }
-
-
 
   slideImages(action: string) {
     if (this.itemWithImages['files'].length > this.i && this.i > -1) {
@@ -47,24 +44,24 @@ export class CartItemRowComponent implements OnInit {
 
   gotoItem(itemWithImages: any) {
     this.router.navigate(['/viewItem/' + itemWithImages['item']['itemId']])
-
   }
 
   quantityChange(qty: number) {
     this.quantity = this.quantity + qty;
     if (this.quantity < 0) { this.quantity = 0 }
-
-    this.sharedVariableService.user.cartItems.map((val:any)=>{
-      if(val['itemId'] ==this.itemWithImages['item']['itemId']){
-        val['quantity'] =this.quantity;
+    this.sharedVariableService.user.cartItems.map((val: any) => {
+      if (val['itemId'] == this.itemWithImages['item']['itemId']) {
+        val['quantity'] = this.quantity;
+        this.itemWithImages['quantity'] = this.quantity;
       }
-      return  val;
+      return val;
     })
 
-
-
-    this.apiService.userRegister(this.sharedVariableService.user).then(() => { });
-
+    this.apiService.userRegister(this.sharedVariableService.user).then(() => {
+      this.quantityEvent.emit({
+        itemWithImages: this.itemWithImages
+      })
+    });
   }
 
 }
