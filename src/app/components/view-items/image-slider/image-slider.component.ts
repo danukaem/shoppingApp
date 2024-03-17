@@ -65,16 +65,35 @@ export class ImageSliderComponent implements OnInit {
 
   addToCart(item: any, quantity: number) {
 
+    // if (!this.sharedVariableService.user.cartItems) {
+    //   this.sharedVariableService.user.cartItems = []
+    // }
+
+    // this.sharedVariableService.user.cartItems.push(
+    //   {
+    //     itemId: item.itemId,
+    //     quantity: quantity
+    //   }
+    // );
+    //////////////////////////////////
     if (!this.sharedVariableService.user.cartItems) {
       this.sharedVariableService.user.cartItems = []
     }
 
-    this.sharedVariableService.user.cartItems.push(
-      {
-        itemId: item.itemId,
-        quantity: quantity
-      }
-    );
+    let cartItems = this.sharedVariableService.user.cartItems.filter((val: any) => { return val.itemId ==  item.itemId })
+    if (cartItems.length > 0) {
+      this.sharedVariableService.user.cartItems = this.sharedVariableService.user.cartItems.filter((val: any) => { return val.itemId !=  item.itemId })
+    }
+
+    if ( quantity > 0) {
+      this.sharedVariableService.user.cartItems.push(
+        {
+          itemId: this.itemWithImages['item']['itemId'],
+          quantity:  quantity
+        }
+      )
+    }
+    this.apiService.userRegister(this.sharedVariableService.user).then(() => { });
 
   }
 

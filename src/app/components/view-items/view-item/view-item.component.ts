@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { Item } from 'src/app/services/models';
 import { SharedVariablesService } from 'src/app/services/shared-variables.service';
@@ -25,10 +25,15 @@ export class ViewItemComponent implements OnInit {
   quantity = 0;
   disable = false;
 
+  // sharedContent = 'Check out this amazing website: https://google.com';
+
+  shareUrl = '';
+
   constructor(
     private readonly apiService: ApiService,
     public readonly sharedVariableService: SharedVariablesService,
-    private readonly route: ActivatedRoute
+    private readonly route: ActivatedRoute,
+    private readonly router: Router
   ) {
 
   }
@@ -51,6 +56,9 @@ export class ViewItemComponent implements OnInit {
       this.disable = true;
 
     }
+
+
+    this.shareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(`https://danukaem.github.io/shoppingApp/${this.router.url}`)}`;
 
   }
 
@@ -135,5 +143,4 @@ export class ViewItemComponent implements OnInit {
     this.apiService.userRegister(this.sharedVariableService.user).then(() => { });
 
   }
-
 }
