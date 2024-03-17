@@ -28,12 +28,19 @@ export class RegisterUserComponent implements OnInit {
   showAlert = false;
   showAlertSuccess = false;
 
+  siteLogo: any;
+
+
   constructor(private readonly apiService: ApiService, private readonly router: Router,private sharedVariable: SharedVariablesService) {
 
   }
 
   ngOnInit(): void {
-   
+    this.apiService.getAssets().then((val) => {
+      if (val.exists()) {
+        this.siteLogo = val.val()['siteLogo']
+      }
+    })
 
     // this.apiService.getImages();
 

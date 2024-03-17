@@ -10,7 +10,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import {MatGridListModule} from '@angular/material/grid-list';
-
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 
@@ -26,7 +26,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
         MatDividerModule,
         MatButtonModule,
         FormsModule,
-        MatGridListModule
+        MatGridListModule,
+        MatCheckboxModule
 
 
     ],
@@ -39,7 +40,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
         MatDividerModule,
         MatButtonModule,
         FormsModule,
-        MatGridListModule
+        MatGridListModule,
+        MatCheckboxModule
     
     ]
 })

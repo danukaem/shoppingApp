@@ -5,8 +5,8 @@
                 <div class="carousel slide" data-bs-ride="carousel">
 
                     <div class="carousel-inner">
-                        <div class="carousel-item active" *ngIf="uploadedImageBase64List.length>0">
-                            <img [src]="uploadedImageBase64List[i].fileBase64String"
+                        <div class="carousel-item active" *ngIf="this.itemWithImages['files'].length>0">
+                            <img [src]="this.itemWithImages['files'][i].fileBase64String"
                                 class="d-block w-100 image-slider-style" alt="...">
 
                         </div>
@@ -27,20 +27,20 @@
 
         <div class="col-5">
 
-            <h1 class="item-name-h1"> {{item.name}}</h1>
-            <mat-divider ></mat-divider>
-
-            <p>Rs.{{item.price}} </p>
+            <h1 class="item-name-h1"> {{this.itemWithImages['item'].name}}</h1>
             <mat-divider></mat-divider>
 
-            <p class="description-p">{{item.description}} </p>
+            <p>Rs.{{this.itemWithImages['item'].price}} </p>
+            <mat-divider></mat-divider>
+
+            <p class="description-p">{{this.itemWithImages['item'].description}} </p>
             <mat-divider></mat-divider>
 
 
             <div class="row image-small-div-row">
-                <ng-container *ngFor="let imgData of uploadedImageBase64List">
+                <ng-container *ngFor="let imgData of this.itemWithImages['files'] ;  let i = index">
                     <div class="image-small-div col-3">
-                        <img [src]="imgData.fileBase64String" class="image-small-img" alt="...">
+                        <img [src]="imgData.fileBase64String" class="image-small-img" alt="..." (click)="imageClick(i)">
                     </div>
 
                 </ng-container>
@@ -53,21 +53,25 @@
         </div>
         <div class="col-3">
 
-            <div class="right-divs">
-                <span>Ship to</span>
-                <span>
-                    address
+            <div class="right-divs"  *ngIf="sharedVariableService.user">
+                <span>Ship to :</span>
+                <span  >
+                    {{sharedVariableService.user.address}}
                 </span>
-                <button mat-raised-button>
+                <button    style="margin-top :20px;margin-bottom :20px  " mat-raised-button color="primary" (click)="changeAddressClick()">
                     change
                 </button>
-                <div>
-                    <textarea matInput placeholder="enter your new shipping address and save"></textarea>
 
+                
+                <div *ngIf="changeAddressView">
+                    <div>
+                        <textarea matInput placeholder="enter your new shipping address and save"  [(ngModel)]="address" name="address"></textarea>
+
+                    </div>
+                    <button   style="margin-top :20px;margin-bottom :20px  "  mat-raised-button  (click)="saveNewAddress()">
+                        save
+                    </button>
                 </div>
-                <button mat-raised-button>
-                    save
-                </button>
 
 
             </div>
@@ -80,13 +84,13 @@
             <mat-divider></mat-divider>
             <div class="right-divs">
                 <p>Quantity </p>
-                <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+                <button mat-icon-button   (click)="quantityChange(-1)">
                     <mat-icon>remove</mat-icon>
                 </button>
                 <span>
-                    <input matInput placeholder="1" value="1" class="quantity-input" type="number">
+                    <input matInput placeholder="1" value="1" class="quantity-input" type="number" [(ngModel)]="quantity" min=0>
                 </span>
-                <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+                <button mat-icon-button  (click)="quantityChange(1)">
                     <mat-icon>add</mat-icon>
                 </button>
 
@@ -94,16 +98,16 @@
             <mat-divider></mat-divider>
             <div class="right-divs">
 
-                <button mat-raised-button class="buy-now-button">
+                <button mat-raised-button class="buy-now-button" [disabled]="disable">
                     Buy Now
                 </button>
-                <button mat-raised-button class="add-to-cart-button">
+                <button mat-raised-button class="add-to-cart-button" (click)="addToCart()"  [disabled]="disable">
                     Add to Cart
                 </button>
                 <button mat-raised-button class="share-button">
                     <mat-icon>share</mat-icon> Share
                 </button>
-                <button mat-raised-button class="like-button">
+                <button mat-raised-button class="like-button"  [disabled]="disable">
                     <svg class="favorite-icon-svg" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                         fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
                         <path
@@ -120,11 +124,11 @@
 
             <ng-container *ngFor="let key of keys">
                 <ng-container
-                    *ngIf="key!='name' && key!='price' && key!='description' && key!='fileIds' && key!='itemOwnerUserId'">
+                    *ngIf="key!='name' && key!='price' && key!='description' && key!='fileIds' && key!='itemOwnerUserId' && this.itemWithImages['item'][key]!=''">
                     <div class="row">
 
                         <div class="col-4">{{this.sharedVariableService.itemKeyMap[key]}} : </div>
-                        <div class="col-8"> {{item[key]}}</div>
+                        <div class="col-8"> {{this.itemWithImages['item'][key]}}</div>
                     </div>
                     <mat-divider></mat-divider>
 

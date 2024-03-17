@@ -19,6 +19,8 @@ import { ImageSliderComponent } from './components/view-items/image-slider/image
 import { ViewAllItemsComponent } from './components/view-all-items/view-all-items.component';
 import { EditItemComponent } from './components/edit-item/edit-item.component';
 import { ViewItemComponent } from './components/view-items/view-item/view-item.component';
+import { CartItemsComponent } from './components/cart-items/cart-items.component';
+import { CartItemRowComponent } from './components/cart-items/cart-item-row/cart-item-row.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { ViewItemComponent } from './components/view-items/view-item/view-item.c
     ImageSliderComponent,
     ViewAllItemsComponent,
     EditItemComponent,
-    ViewItemComponent
+    ViewItemComponent,
+    CartItemsComponent,
+    CartItemRowComponent
   ],
   imports: [
     BrowserModule,

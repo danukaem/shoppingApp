@@ -20,7 +20,8 @@ export class ImageSliderComponent implements OnInit {
     private readonly apiService: ApiService,
     private readonly sharedVariableService: SharedVariablesService,
     private readonly sharedService: SharedService,
-    private readonly router: Router) {
+    private readonly router: Router
+    ) {
 
 
   }
@@ -56,41 +57,36 @@ export class ImageSliderComponent implements OnInit {
     }
 
     this.apiService.removeItem(item.itemId);
-    this.apiService.updateuser(this.sharedVariableService.user).then(()=>{
+    this.apiService.updateuser(this.sharedVariableService.user).then(() => {
 
-      this.apiService.userSignin(this.sharedVariableService.user.email,this.sharedVariableService.user.password)
+      this.apiService.userSignin(this.sharedVariableService.user.email, this.sharedVariableService.user.password)
       this.sharedVariableService.deleteEditSubject.next('items deleted')
 
     });
   }
 
-  addToCart(item:any,quantity:number){
+  addToCart(item: any, quantity: number) {
 
-    if(!this.sharedVariableService.user.cartItems){
-      this.sharedVariableService.user.cartItems =[]
+    if (!this.sharedVariableService.user.cartItems) {
+      this.sharedVariableService.user.cartItems = []
     }
 
-    console.log('add to cart item',item);
-    
+    console.log('add to cart item', item);
+
     this.sharedVariableService.user.cartItems.push(
-      {  
+      {
         itemId: item.itemId,
         quantity: quantity
       }
     );
 
 
-    console.log('this.sharedVariableService.user',this.sharedVariableService.user);
-    
+    console.log('this.sharedVariableService.user', this.sharedVariableService.user);
+
 
   }
 
-  viewItem(itemWithImages:any){
-    console.log('viewItem=======',itemWithImages);
-    this.sharedVariableService.viewItemData = itemWithImages;
-
-    this.router.navigate(['/viewItem'])
-    
-
+  viewItem(itemWithImages: any) {
+    this.router.navigate(['/viewItem/' + itemWithImages['item']['itemId']])
   }
 }

@@ -1,0 +1,32 @@
+.image-slider-style {
+    width: 100% !important;
+}
+
+.carousel-item active {
+    width: 100% !important;
+}
+
+.carousel-inner {
+    width: 100% !important;
+}
+
+.carousel {
+    width: 50%;
+}
+
+.right-divs {
+    margin: 10px;
+  }
+  
+
+  .quantity-input {
+    height: 50px;
+    border: none;
+    width: 100px;
+    text-align: center;
+    font-size: 25px;
+  } 
+
+  mat-divider{
+    margin: 10px;
+  }

@@ -1,0 +1,112 @@
+<div class="container">
+    <div class="row">
+        <div class="col-8" style="min-height: 40vh;">
+
+            <div>
+                <h1>Shopping Cart({{itemsWithImages.length}})</h1>
+            </div>
+            <div><mat-checkbox class="example-margin">Select All</mat-checkbox>&nbsp;&nbsp;&nbsp;&nbsp; |
+                &nbsp;&nbsp;&nbsp; <span>Delete
+                    selected items</span></div>
+            <mat-divider></mat-divider>
+
+            <div class="row " *ngFor="let cartItem of itemsWithImages">
+                <div class="col-1"><mat-checkbox class="example-margin">
+                    </mat-checkbox></div>
+
+                <div class="col-11">
+
+                    
+                        <app-cart-item-row [itemWithImages]="cartItem"></app-cart-item-row>
+                    
+                </div>
+
+
+
+
+
+                <!-- <div class="col-2">
+
+                    <app-cart-item-row [itemWithImages]="cartItem"></app-cart-item-row>
+
+
+                </div>
+                <div class="col-9">
+
+
+                    <div class="row">
+
+                        <div class="col-6">
+                            <p style="font-size: 20px;font-weight: 400;">{{cartItem.item['name']}}</p>
+                            <p style="font-size: 14px;color: gray;">Rs.{{cartItem.item['price']}}</p>
+                            <p style="font-size: 16px;color: rgb(67, 247, 22);">{{cartItem.item['condition']}}</p>
+
+                        </div>
+
+                        <div class="col-6">
+
+                            <div class="right-divs">
+                                <p>Quantity </p>
+                                <button mat-icon-button (click)="quantityChange(-1)">
+                                    <mat-icon>remove</mat-icon>
+                                </button>
+                                <span>
+                                    <input matInput placeholder="1" value="1" class="quantity-input" type="number"
+                                        [(ngModel)]="quantity" min=0>
+                                </span>
+                                <button mat-icon-button (click)="quantityChange(1)">
+                                    <mat-icon>add</mat-icon>
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div> -->
+
+
+
+
+                <mat-divider></mat-divider>
+
+            </div>
+
+
+        </div>
+
+
+
+
+        <div class="col-4"
+            style="background-color: rgb(244 247 249);min-height: 40vh;padding-top: 20px;border-radius: 5px;">
+            <div>
+                <h1>Summary</h1>
+            </div>
+            <div class="row">
+                <div class="col-8">Subtotal</div>
+                <div class="col-4">Rs.1000</div>
+            </div>
+            <mat-divider></mat-divider>
+
+            <div class="row">
+                <div class="col-8">Shipping fee</div>
+                <div class="col-4">Rs.300</div>
+            </div>
+            <mat-divider></mat-divider>
+
+            <div class="row">
+                <div class="col-8">Total</div>
+                <div class="col-4">Rs.1300</div>
+            </div>
+            <mat-divider></mat-divider>
+
+            <button mat-raised-button color="primary" (click)="checkout()">
+                Checkout(1)
+            </button>
+
+        </div>
+    </div>
+
+</div>

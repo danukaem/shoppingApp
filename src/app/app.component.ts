@@ -20,10 +20,9 @@ export class AppComponent implements OnInit {
     // this.writeData();
     this.sharedVariableService.user = JSON.parse(localStorage.getItem('user')!);
 
-    // this.sharedVariableService.editItemSubject.subscribe((res:any)=>{
-    //   console.log('editItemSubject in AppComponent::::::::::::::::',res);
-    // })
-
+    if (this.sharedVariableService.user) {
+      this.apiService.userSignin(this.sharedVariableService.user.email, this.sharedVariableService.user.password).then();
+    }
 
   }
 

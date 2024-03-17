@@ -94,3 +94,7 @@
   .remove-button{
     z-index: 2;
   }
+
+  .image-slider-div{
+    text-align-last: center;
+}

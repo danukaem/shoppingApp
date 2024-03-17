@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark nav-bar-style">
     <div class="container-fluid register-nav-div">
         <span class="navbar-brand col-4 nav-text home-img-span" [routerLink]="['/']">
-            <img src="../../../../assets/DK.png" class="home-img">
+            <img *ngIf="siteLogo != undefined" [src]="siteLogo['fileBase64String']" class="home-img">
 
         </span>
     </div>

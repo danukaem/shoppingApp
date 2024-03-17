@@ -15,13 +15,15 @@
                                     <div class="carousel slide" data-bs-ride="carousel">
 
                                         <div class="carousel-inner">
-                                            <div class="carousel-item active" *ngIf="uploadedImageBase64List.length>0">
+                                            <div class="carousel-item active image-slider-div" *ngIf="uploadedImageBase64List.length>0">
                                                 <img [src]="uploadedImageBase64List[i].fileBase64String"
-                                                    class="d-block w-100 image-slider-style" alt="...">
-                                                <a mat-mini-fab color="primary" class="remove-button"
-                                                    (click)="removeItem(uploadedImageBase64List[i],i)"><mat-icon>delete</mat-icon></a>
+                                                    class="image-slider-style" alt="...">
+                                                <!-- <a mat-mini-fab color="primary" class="remove-button"
+                                                    (click)="removeItem(uploadedImageBase64List[i],i)"><mat-icon>delete</mat-icon></a> -->
 
                                             </div>
+                                            <a mat-mini-fab color="primary" class="remove-button"
+                                                    (click)="removeItem(uploadedImageBase64List[i],i)"><mat-icon>delete</mat-icon></a>
 
                                         </div>
                                         <button class="carousel-control-prev" type="button" data-bs-slide="prev"

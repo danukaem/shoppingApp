@@ -49,3 +49,7 @@
     overflow-y: auto;
     height: 100px;
 }
+
+.image-slider-div{
+    text-align-last: center;
+}

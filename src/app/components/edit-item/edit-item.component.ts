@@ -96,7 +96,7 @@ export class EditItemComponent implements OnInit {
         this.uploadedFiles = [];
 
         this.item = { ...this.initialItem }
-        this.router.navigate(['/'])
+        this.router.navigate(['/viewItems'])
 
       })
 
