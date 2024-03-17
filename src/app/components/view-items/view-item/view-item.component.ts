@@ -52,9 +52,6 @@ export class ViewItemComponent implements OnInit {
 
     }
 
-
-
-
   }
 
   getItem(itemId: string) {
@@ -97,8 +94,6 @@ export class ViewItemComponent implements OnInit {
   }
 
   imageClick(i: number) {
-    console.log('image clicked', i);
-
     this.i = i;
   }
 

@@ -81,7 +81,7 @@ export class ApiService {
           })
         }
       } else {
-        console.log("No data available");
+        console.warn("No data available");
       }
     });
   }
@@ -100,6 +100,7 @@ export class ApiService {
   }
 
   addItem(item: Item): Promise<any> {
+    
     const app = initializeApp(environment.firebase);
     const db = getDatabase(app);
     const dataRef = ref(db, `items/${item['itemId']}`);
@@ -115,21 +116,21 @@ export class ApiService {
     return get(dataRef);
   }
 
-  removeItem(itemId:string) : Promise<any>{
+  removeItem(itemId: string): Promise<any> {
 
     const app = initializeApp(environment.firebase);
     const db = getDatabase(app);
     const dataRef = ref(db, `items/${itemId}`);
-    return remove(dataRef) 
+    return remove(dataRef)
 
   }
 
-  removeFile(fileIdId:string) : Promise<any>{
+  removeFile(fileIdId: string): Promise<any> {
 
     const app = initializeApp(environment.firebase);
     const db = getDatabase(app);
     const dataRef = ref(db, `files/${fileIdId}`);
-    return remove(dataRef) 
+    return remove(dataRef)
 
   }
 
@@ -148,16 +149,15 @@ export class ApiService {
     return get(dataRef);
   }
 
-  updateuser(user:User){
+  updateuser(user: User) {
     let emailFirstPartFirstPart = user['email'].split('@')[0]
     const app = initializeApp(environment.firebase);
     const db = getDatabase(app);
     const dataRef = ref(db, `users/${emailFirstPartFirstPart}_${user['password']}`);
     localStorage.setItem('uemailpassword', `${emailFirstPartFirstPart}_${user['password']}`);
-    
+
     return set(dataRef, this.sharedVariable.user);
   }
 }
 
 
- 

@@ -46,7 +46,20 @@ export class EditItemComponent implements OnInit {
   removedImages: { fileId: string, fileName: string, fileBase64String: string }[] = []
 
   i = 0;
+  conditions: any[] = [
+    {value: 'Brand New', viewValue: 'Brand New'},
+    {value: 'Like Brand New', viewValue: 'Like Brand New'},
+    {value: 'Lightly Used', viewValue: 'Lightly Used'},
+    {value: 'Used', viewValue: 'Used'},
+    {value: 'Heavy Used', viewValue: 'Heavy Used'},
+  ];
 
+  genders:any =[
+    {value: 'Male', viewValue: 'Male'},
+    {value: 'Female', viewValue: 'Female'},
+    {value: 'Other', viewValue: 'Other'},
+  ];
+  
   constructor(
     private readonly apiService: ApiService,
     private readonly sharedVariableService: SharedVariablesService,

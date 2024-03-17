@@ -21,13 +21,11 @@ export class ImageSliderComponent implements OnInit {
     private readonly sharedVariableService: SharedVariablesService,
     private readonly sharedService: SharedService,
     private readonly router: Router
-    ) {
+  ) {
 
 
   }
-  ngOnInit(): void {
-    console.log('itemWithImages', this.itemWithImages);
-  }
+  ngOnInit(): void { }
 
   slideImages(action: string) {
     if (this.itemWithImages.files.length > this.i && this.i > -1) {
@@ -71,18 +69,12 @@ export class ImageSliderComponent implements OnInit {
       this.sharedVariableService.user.cartItems = []
     }
 
-    console.log('add to cart item', item);
-
     this.sharedVariableService.user.cartItems.push(
       {
         itemId: item.itemId,
         quantity: quantity
       }
     );
-
-
-    console.log('this.sharedVariableService.user', this.sharedVariableService.user);
-
 
   }
 

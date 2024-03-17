@@ -14,3 +14,7 @@
   mat-divider{
     margin: 10px;
   }
+
+  .delete-all-span:hover{
+    cursor: pointer;
+  }

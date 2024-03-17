@@ -28,29 +28,29 @@ export class ViewAllItemsComponent implements OnInit {
 
     this.searchSubject.pipe(debounceTime(1000)).subscribe((val: any) => {
 
-      if(val){
+      if (val) {
         this.itemsWithImages = this.itemsWithImagesAll.filter((element: any) => {
-          return this.checkKeyInItem(element.item,val) ;
+          return this.checkKeyInItem(element.item, val);
         })
-      }else{
+      } else {
         this.itemsWithImages = this.itemsWithImagesAll;
       }
-     
+
     })
 
   }
 
-  checkKeyInItem(item:Item,val:string):boolean{
-     return (item.name.toLowerCase().includes(val.toLowerCase()) ||
-     item.condition.toLowerCase().includes(val.toLowerCase())||
-     item.specification.toLowerCase().includes(val.toLowerCase())||
-     item.conditionDescription.toLowerCase().includes(val.toLowerCase())||
-     item.type.toLowerCase().includes(val.toLowerCase())||
-     item.color.toLowerCase().includes(val.toLowerCase())||
-     item.description.toLowerCase().includes(val.toLowerCase())||
-     item.brand.toLowerCase().includes(val.toLowerCase())||
-     item.material.toLowerCase().includes(val.toLowerCase())||
-     item.countryManufactured.toLowerCase().includes(val.toLowerCase()))
+  checkKeyInItem(item: Item, val: string): boolean {
+    return (item.name.toLowerCase().includes(val.toLowerCase()) ||
+      item.condition.toLowerCase().includes(val.toLowerCase()) ||
+      item.specification.toLowerCase().includes(val.toLowerCase()) ||
+      item.conditionDescription.toLowerCase().includes(val.toLowerCase()) ||
+      item.type.toLowerCase().includes(val.toLowerCase()) ||
+      item.color.toLowerCase().includes(val.toLowerCase()) ||
+      item.description.toLowerCase().includes(val.toLowerCase()) ||
+      item.brand.toLowerCase().includes(val.toLowerCase()) ||
+      item.material.toLowerCase().includes(val.toLowerCase()) ||
+      item.countryManufactured.toLowerCase().includes(val.toLowerCase()))
 
   }
 
@@ -84,19 +84,12 @@ export class ViewAllItemsComponent implements OnInit {
                 })
               }
               this.itemsWithImages.push(itemWithImages);
-              this.itemsWithImagesAll = [ ...this.itemsWithImages ];
-              console.log('this.itemsWithImagesAll', this.itemsWithImagesAll);
-
+              this.itemsWithImagesAll = [...this.itemsWithImages];
             }
           }).catch((e: any) => {
             console.error(e);
           })
         }
-
-
-
-
-
       } else {
 
       }
@@ -105,7 +98,6 @@ export class ViewAllItemsComponent implements OnInit {
 
   search() {
     this.searchSubject.next(this.searchKey);
-
   }
 
 }

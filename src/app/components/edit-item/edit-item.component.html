@@ -48,22 +48,35 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Condition</label>
-                                <input name="abc" [(ngModel)]="item.condition" name="item.condition" type="text"
-                                    class="form-control">
+
+                                    <mat-select [(ngModel)]="item.condition" name="item.condition">
+                                        <ng-container *ngFor="let condition of conditions">
+                                            <mat-option [value]="condition.value">{{condition.viewValue}}</mat-option>
+                                        </ng-container>
+                                    </mat-select>
+                                    
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">sale ends in</label>
                                 <input name="abc" [(ngModel)]="item.saleEnd" name="item.saleEnd" type="text"
                                     class="form-control">
+
+                                    <!-- <mat-form-field>
+                                        <mat-label>Choose a date</mat-label>
+                                        <input matInput [matDatepicker]="picker" [(ngModel)]="item.saleEnd" name="item.saleEnd">
+                                        <mat-hint>MM/DD/YYYY</mat-hint>
+                                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+                                      </mat-form-field> -->
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Quantity</label>
-                                <input name="abc" [(ngModel)]="item.quantity" name="item.quantity" type="text"
+                                <input name="abc" [(ngModel)]="item.quantity" name="item.quantity" type="number"
                                     class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Price</label>
-                                <input name="abc" [(ngModel)]="item.price" name="item.price" type="text"
+                                <input name="abc" [(ngModel)]="item.price" name="item.price" type="number"
                                     class="form-control">
                             </div>
                             <div class="mb-3">
@@ -120,8 +133,11 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Gender</label>
-                                <input name="abc" [(ngModel)]="item.gender" name="item.gender" type="text"
-                                    class="form-control">
+                                <mat-select [(ngModel)]="item.gender" name="item.gender">
+                                    <ng-container *ngFor="let gender of genders">
+                                        <mat-option [value]="gender.value">{{gender.viewValue}}</mat-option>
+                                    </ng-container>
+                                </mat-select>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Description</label>

@@ -11,8 +11,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-
-
+import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
     declarations: [
@@ -27,8 +28,10 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
         MatButtonModule,
         FormsModule,
         MatGridListModule,
-        MatCheckboxModule
-
+        MatCheckboxModule,
+        MatSelectModule,
+        MatDatepickerModule,
+        MatNativeDateModule
 
     ],
     exports: [
@@ -41,7 +44,10 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
         MatButtonModule,
         FormsModule,
         MatGridListModule,
-        MatCheckboxModule
+        MatCheckboxModule,
+        MatSelectModule,
+        MatDatepickerModule,
+        MatNativeDateModule
     
     ]
 })

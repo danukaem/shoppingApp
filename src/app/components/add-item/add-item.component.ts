@@ -5,6 +5,7 @@ import { Item } from 'src/app/services/models';
 import { SharedVariablesService } from 'src/app/services/shared-variables.service';
 import { SharedService } from 'src/app/services/shared.service';
 
+ 
 @Component({
   selector: 'app-add-item',
   templateUrl: './add-item.component.html',
@@ -44,6 +45,20 @@ export class AddItemComponent implements OnInit {
   uploadedImageBase64List: { fileId: string, fileName: string, fileBase64String: string }[] = []
 
   i = 0;
+
+  conditions: any[] = [
+    {value: 'Brand New', viewValue: 'Brand New'},
+    {value: 'Like Brand New', viewValue: 'Like Brand New'},
+    {value: 'Lightly Used', viewValue: 'Lightly Used'},
+    {value: 'Used', viewValue: 'Used'},
+    {value: 'Heavy Used', viewValue: 'Heavy Used'},
+  ];
+
+  genders:any =[
+    {value: 'Male', viewValue: 'Male'},
+    {value: 'Female', viewValue: 'Female'},
+    {value: 'Other', viewValue: 'Other'},
+  ];
 
   constructor(
     private readonly apiService: ApiService,
@@ -127,5 +142,7 @@ export class AddItemComponent implements OnInit {
       }
     }
   }
+
+ 
 
 }

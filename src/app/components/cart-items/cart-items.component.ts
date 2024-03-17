@@ -114,23 +114,16 @@ export class CartItemsComponent implements OnInit {
     }
   }
 
+
   deleteSelectdeItems() {
-
-    console.log('this.selectedItems', this.selectedItems);
-    console.log('1 this.sharedVariableService.user.cartItems', this.sharedVariableService.user.cartItems);
-
-
     for (let selectedItem of this.selectedItems) {
-
       this.sharedVariableService.user.cartItems = this.sharedVariableService.user.cartItems.filter((val: any) => {
         return val['itemId'] != selectedItem['item']['itemId']
       })
-
-
     }
 
-    console.log('2 this.sharedVariableService.user.cartItems', this.sharedVariableService.user.cartItems);
-
+    this.selectedItems=[]
+    this.calculateTotal();
 
 
     this.apiService.userRegister(this.sharedVariableService.user).then(() => { 
